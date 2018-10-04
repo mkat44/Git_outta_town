@@ -24,7 +24,14 @@
             return arr.join(" ")
         }
         city = capitalize(city)
-        state = state.toUpperCase()
+
+        if (state.length === 2){
+            state = state.toUpperCase()
+        }
+        else {
+            state = state.toLowerCase()
+            state = state.charAt(0).toUpperCase() + state.slice(1)
+        }
         
           var fullLink = link + city + ", " + state
          console.log(fullLink)
