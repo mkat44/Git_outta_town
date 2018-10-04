@@ -19,8 +19,15 @@ window.onload = function(){
         city  = $("#searchBar").val()
         state = $("#searchState").val()
         // Making the cities first character uppercase and making state all uppercase.
-        city = city.toLowerCase()
-        city = city.charAt(0).toUpperCase() + city.slice(1)
+        function capitalize(str) {
+            var arr = []
+            var sep = str.split(" ")
+            for (i=0; i<sep.length; i++) {
+                arr.push(sep[i][0].toUpperCase()+sep[i].slice(1))
+            }
+            return arr.join(" ")
+        }
+        city = capitalize(city)
         state = state.toUpperCase()
         
 
