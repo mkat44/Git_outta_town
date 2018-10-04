@@ -33,6 +33,18 @@ window.onload = function(){
 
         var fullLink = link + city + ", " + state
         console.log(fullLink)
+=======
+
+// Here we are doing everything to generate the link.  Upon clicking any button, it runs a function that sets our
+// city varible to be the vavlue of a #cityName text input box. Then, we set a new variable called fullLink to equal
+// the base wiki link plus the city name, this creating a link similar to this: https://en.wikipedia.org/wiki/Detroit
+// After this, we create a new dive that holds the wikiLink div, and in the wikiLink div, we hold the link to the
+// wikipedia page.  Then we simply append it to the main content div. 
+window.onload = function(){
+    $(".btn").click(function(){
+        city = $("#cityName").val()
+
+        var fullLink = link + city
 
         $('<div>', {
             id: 'wikiLinkHolder'
