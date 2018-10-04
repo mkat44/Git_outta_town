@@ -5,20 +5,37 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Git Outta Town - Project 1</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="css/reset.css" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-    <script src="https://code.jquery.com/jquery.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.css"  media="screen,projection"/>
+    <link rel="stylesheet" type="text/css" media="screen" href="css/style.css" />
     <script src="javascript/app.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
 </head>
 <body>
     <nav>
-
+        <div class="nav-wrapper light-blue darken-1">
+            <a href="homePage" class="brand-logo center">Git Outta Town</a>
+        </div>
     </nav>
     <div class="container">
         <div class="row">
             <div class="col l12" id="search">
-
+                <form>
+                    <div class="input-field col l8">
+                        <i class="material-icons prefix">search</i>
+                        <input id="searchBar" type="search">
+                        <label for="searchBar">City Name</label>
+                    </div>
+                    <div class="input-field col l2 ">
+                        <input id="searchState" type="search">
+                        <label for="searchState">State</label>
+                    </div>
+                    <div class="col l2">
+                        <a class="waves-effect waves-light btn light-blue darken-1" id="searchButton">Search</a>
+                    </div>
+                </form>
             </div>
         </div>
         <div class="row">
@@ -39,6 +56,6 @@
 
 
 
-<script type="text/javascript" src="js/materialize.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.js"></script>
 </body>
 </html>
