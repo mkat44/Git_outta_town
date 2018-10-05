@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-$(document).ready(function(){
-    $('.parallax').parallax();
-});
-=======
 // Wikipedia link generator
  
  // First we start by creating the variables that we need.  For this case, we have city, which is the city input
@@ -34,7 +29,7 @@ $(document).ready(function(){
 
         var fullLink = link + city + ", " + state
         console.log(fullLink)
-    }
+    });
 
         if (state.length === 2){
             state = state.toUpperCase()
@@ -54,9 +49,9 @@ $(document).ready(function(){
         }).append( $('<div>', {
             id: 'wikiLink'
         })).append("<a href = '" + fullLink + "'>"+fullLink).appendTo("#mainContent")
-    })
-}
+    
 
+}
 var searchTerm = $("#searchBar").val().trim() + $("#searchState").val().trim();
 
 // placeholder for start date (needs formatting eventually)
@@ -103,4 +98,3 @@ var searchTerm = $("#searchBar").val().trim() + $("#searchState").val().trim();
     }).then(function(response) {
         console.log(response);
     })
->>>>>>> 26f83254b8bd6e2ac102cf1ef120740df4c92243
