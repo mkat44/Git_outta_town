@@ -105,6 +105,7 @@
     // doesn't currently return anything but a console log; working on pulling out relevant info now
     var queryEB = "https://www.eventbriteapi.com/v3/events/search/?q=" + searchTerm + "&start_date.range_start=" + startDate + "&start_date.range_end=" + endDate + "&token=JYNTN4DWJF75I4XR2WTL";
 
+
     $.ajax({
         url: queryEB,
         method: "GET"
