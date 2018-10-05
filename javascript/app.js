@@ -13,8 +13,9 @@
 // Here we get the values of the input forms and assign them to the city and state variables to be displayed.
  window.onload = function(){
      $('.parallax').parallax();
-     
+     $('.collapsible').hide();
      $("#searchButton").click(function(){
+         $('.collapsible').show();
          // Setting the city and state variables
         city  = $("#searchBar").val()
         state = $("#searchState").val()
@@ -104,6 +105,7 @@
     // doesn't currently return anything but a console log; working on pulling out relevant info now
     var queryEB = "https://www.eventbriteapi.com/v3/events/search/?q=" + searchTerm + "&start_date.range_start=" + startDate + "&start_date.range_end=" + endDate + "&token=JYNTN4DWJF75I4XR2WTL";
 
+
     $.ajax({
         url: queryEB,
         method: "GET"
@@ -111,4 +113,33 @@
         console.log(response);
     })
 
-}
+
+// mapquest geolocation api
+// takes city,state and gives us lat/lon for other apis
+
+    var queryLocation = "http://www.mapquestapi.com/geocoding/v1/address?key=QxUvIdV0SxYVrEFvZBdqCWOBVABMZZkd&location=" + searchTerm;
+    var searchLON
+    var searchLAT
+    $.ajax({
+        url: queryLocation,
+        method: "GET"
+    }).then(function(response) {
+        console.log(response)
+        searchLAT = response.results[0].locations[0].latLng.lat;
+        searchLON = response.results[0].locations[0].latLng.lng;
+        console.log(searchLAT, searchLON);
+    })
+
+// meetup
+// needs dates formatted as YYYY-MM-DD+T+HH:MM:SS
+// needs cities as LON (longitude) & LAT (latitude)
+// doesn't currently return anything but a console log; working on pulling out relevant info now
+    // var queryMeetup = "https://api.meetup.com/find/upcoming_events/?key=50714b3e1a91d102f757e2e3b466057&start_date_range=" + STARTDATE + "&end_date_range=" + ENDDATE + "&lat=" + searchLAT + "&lon=" + searchLON;
+
+    // $.ajax({
+    //     url: queryMeetup,
+    //     method: "GET"
+    // }).then(function(response) {
+    //     console.log(response);
+    // })
+ 
