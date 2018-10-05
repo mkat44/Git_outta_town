@@ -1,43 +1,70 @@
 
 // api website for weather
-// api.openweathermap.org/data/2.5/weather?q={city name}
+// api.openweathermap.org/data/2.5/weather?q=cd6ea6b940f096174cde65479a31e8b5
 
 // // API key for open weather app
 // cd6ea6b940f096174cde65479a31e8b5
 
-// logic for city weather
-$(document).ready(function(){
+// var key = "cd6ea6b940f096174cde65479a31e8b5";
+// var city = "YOUR CITY"; // My test case was "London"
+// var url = "https://api.openweathermap.org/data/2.5/forecast?";
 
-    // var city = "54901";
-    var key = "id=cd6ea6b940f096174cde65479a31e8b5";
-    
-    $(".btn").on("click", function(){
-      var city = document.getElementById("city").value
-    
-      var api = "http://api.openweathermap.org/data/2.5/weather?city=" + city + ",us" + "&" + key;  
-      console.log("Before JSON"); //Works
-      console.log(api); //Copy & Paste into browser works
-      $.getJSON(api, function(data){
-        console.log("JSON fired => ", data); //Doesn't Log
-      }).fail(function(jqxhr, textStatus, error){
-        console.log('Error:', textStatus, error)
-      });  
-    }); 
-    
-    $(".btn").on("click", function(){
-        var state = document.getElementById("city").value
+// $.ajax({
+//   url: url, //API Call
+//   dataType: "json",
+//   type: "GET",
+//   data: {
+//     q: city,
+//     appid: key,
+//     units: "metric",
+//     cnt: "10"
+//   },
+//   success: function(data) {
+//     console.log('Received data:', data) // For testing
+//     var wf = "";
+//     wf += "<h2>" + data.city.name + "</h2>"; // City (displays once)
+//     $.each(data.list, function(index, val) {
+//       wf += "<p>" // Opening paragraph tag
+//       wf += "<b>Day " + index + "</b>: " // Day
+//       wf += val.main.temp + "&degC" // Temperature
+//       wf += "<span> | " + val.weather[0].description + "</span>";
       
-        var api = "http://api.openweathermap.org/data/2.5/weather?state=" + state + ",us" + "&" + key;  
-        console.log("Before JSON"); //Works
-        console.log(api); //Copy & Paste into browser works
-        $.getJSON(api, function(data){
-          console.log("JSON fired => ", data); //Doesn't Log
-        }).fail(function(jqxhr, textStatus, error){
-          console.log('Error:', textStatus, error)
-        });  
-      }); 
-  });
+//     });
+//     $("#showWeatherForcast").html(wf);
+//   }
+// });
 
+ 
+    $(document).ready(function(){
 
-// 
+        $('#submitWeather').click(function(){
+    
+            var city = $("#city").val();
+    
+            if (city != ''){
+    
+                $.ajax({
+                    url: 'https://api.openweathermap.org/data/2.5/weather?q=' + city + "&units=imperial" + "&precipitation" + "&appid=cd6ea6b940f096174cde65479a31e8b5",
+                    type: "GET",
+                    dataType: "jsonp",
+                    success: function(data){
+                        var widget = show(data);
+    
+                        $("#show").html(widget);
+    
+                        $("#city").val('');
+                    }
+                });
+    
+            }else{
+                $("#error").html('Field cannot be empty');
+            }
+        });
+    });
+    
+    function show(data) {
+        return "<h3><strong>Temperature</strong>: "+ data.main.temp +"</h3>"
+    }
+
+    
 

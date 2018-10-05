@@ -1,25 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+
         <meta charset="utf-8">
+
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+                      
         <link href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.9/css/weather-icons.min.css" rel="stylesheet">
-  
+        
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+        
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+      
     </head>
 
+                   
     <body>
- 
-  
-        <div>
-            <h1>Weather App</h1>
-            <input id="city" type="text" placeholder="Minneapolis" />
-            <button class="btn btn-primary" type="submit">Submit</button>
-            <input id="state" type="text" placeholder="Minnesota" />
-            <button class="btn btn-primary" type="submit">Submit</button>
-        </div>
 
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+            <div class="container">
+                    <div class="row">
+                        <h3 class="text-center text-primary">Enter City Name</h3>
+                        <span id="error"></span>	
+                    </div>
+          
+                    <div class="row form-group form-inline" id="rowDiv">
+                        <input type="text" name="city" id='city' class="form-control" placeholder="Minneapolis">
+                        <button id="submitWeather" class="btn btn-primary">Search</button>
+                    </div>
+          
+                    <div id="show"></div>
+          
+                </div>
         <script src="logic.js"></script>
     </body>
 </html>
