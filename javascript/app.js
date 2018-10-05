@@ -13,8 +13,9 @@
 // Here we get the values of the input forms and assign them to the city and state variables to be displayed.
  window.onload = function(){
      $('.parallax').parallax();
-     
+     $('.collapsible').hide();
      $("#searchButton").click(function(){
+         $('.collapsible').show();
          // Setting the city and state variables
         city  = $("#searchBar").val()
         state = $("#searchState").val()
