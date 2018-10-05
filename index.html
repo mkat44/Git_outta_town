@@ -5,11 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Git Outta Town - Project 1</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
+    <!-- <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/> -->
+    <link rel="stylesheet" type="text/css" media="screen" href="css/style.css" />
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery.js"></script>
-    <script src="main.js"></script>
+    <script src="javascript/app.js"></script>
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
 </head>
 <body>
     <nav>
@@ -23,9 +25,14 @@
         </div>
         <div class="row">
             <div class="col l12" id="contentHeader">
-                <h2>
-                    City Name
-                </h2>
+                <h2 id="city-name">Boston</h2>
+                <h2 id="state-name">MA</h2>
+                <h2 id="start-date">2018-10-21</h2>
+                <h2 id="end-date">2018-10-27</h2>
+                <input id="new-city" type="submit" value="Submit">
+                <!-- <input id="sportsH" class="eventH" type="submit" value="Sports">
+                <input id="musicH" class="eventH" type="submit" value="Music">
+                <input id="theatreH" class="eventH" type="submit" value="Theatre"> -->
             </div>
         </div>
         <div class="row">
@@ -39,6 +46,6 @@
 
 
 
-<script type="text/javascript" src="js/materialize.min.js"></script>
+<!-- <script type="text/javascript" src="js/materialize.min.js"></script> -->
 </body>
 </html>
