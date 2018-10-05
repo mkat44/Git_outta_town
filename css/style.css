@@ -2,7 +2,7 @@ body{
     height: 1500px;
 }
 .parallax-container{
-    height: 500px;
+    height: 400px;
 }
 #searchButton{
     height: 100%;
@@ -14,7 +14,8 @@ body{
 }
 #parallaxImage{
     opacity: 1;
-    height: 500px;
+    height: 750px;
+    margin-bottom: 125px;
 }
 #searchBar{
     margin-top: 20px;
