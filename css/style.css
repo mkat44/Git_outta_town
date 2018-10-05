@@ -34,3 +34,10 @@ body{
     padding-left: 0.75rem;
     padding-right: 0.75rem;
 }
+#paraHeader{
+    margin-top: 250px;
+    margin-left: 12px;
+}
+#paraHeaderText{
+    margin-left:-1px;
+}

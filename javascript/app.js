@@ -9,6 +9,7 @@
 // Here we get the values of the input forms and assign them to the city and state variables to be displayed.
  window.onload = function(){
      $('.parallax').parallax();
+     $('.collapsible').collapsible();
      $('.collapsible').hide();
      $("#searchButton").click(function(){
          $('.collapsible').show();
