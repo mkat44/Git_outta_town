@@ -29,7 +29,7 @@
 
         var fullLink = link + city + ", " + state
         console.log(fullLink)
-    }
+    });
 
         if (state.length === 2){
             state = state.toUpperCase()
@@ -49,9 +49,9 @@
         }).append( $('<div>', {
             id: 'wikiLink'
         })).append("<a href = '" + fullLink + "'>"+fullLink).appendTo("#mainContent")
-    })
-}
+    
 
+}
 var searchTerm = $("#searchBar").val().trim() + $("#searchState").val().trim();
 
 // placeholder for start date (needs formatting eventually)
