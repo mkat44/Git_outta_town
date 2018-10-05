@@ -8,6 +8,8 @@
  
 // Here we get the values of the input forms and assign them to the city and state variables to be displayed.
  window.onload = function(){
+     $('.parallax').parallax();
+     
      $("#searchButton").click(function(){
          // Setting the city and state variables
         city  = $("#searchBar").val()
@@ -29,7 +31,9 @@
 
         var fullLink = link + city + ", " + state
         console.log(fullLink)
-    
+
+    });
+
 
         if (state.length === 2){
             state = state.toUpperCase()
@@ -42,13 +46,16 @@
           var fullLink = link + city + ", " + state
          console.log(fullLink)
 
-         $('<div>', {
-             id: 'wikiLinkHolder'
-         }).append( $('<div>', {
-             id: 'wikiLink'
-         })).append("<a href = '" + fullLink + "'>"+fullLink).appendTo("#mainContent")
-     })
- 
+        $('<div>', {
+            id: 'wikiLinkHolder'
+        }).append( $('<div>', {
+            id: 'wikiLink'
+        })).append("<a href = '" + fullLink + "'>"+fullLink).appendTo("#mainContent")
+    
+
+}
+var searchTerm = $("#searchBar").val().trim() + $("#searchState").val().trim();
+
 
     var searchTerm = city + "+" + state
 
