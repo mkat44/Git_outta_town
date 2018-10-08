@@ -237,21 +237,18 @@ if (startDate < endDate) {
             var eventName = response.events[i].name;
             var eventDate = moment(response.events[i].local_date).format("MM/DD/YYYY");
             var eventTime = moment(response.events[i].local_time, "HH:mm:ss").format("hh:mm a");
-            var eventLocation = response.events[i].venue.address_1;
             var eventLink = "<a href='" + response.events[i].link + "' + target='_blank'><button>More Info</button></a>";
 
             var event = $("<tr>");
             var eventDateTD = $("<td>");
             var eventTimeTD = $("<td>");
             var eventNameTD = $("<td>");
-            var eventLocationTD = $("<td>");
             var eventLinkTD = $("<td>");
             $(eventDateTD).append(eventDate);
             $(eventTimeTD).append(eventTime);
             $(eventNameTD).append(eventName);
-            $(eventLocationTD).append(eventLocation);
             $(eventLinkTD).append(eventLink);
-            $(event).append(eventDateTD, eventNameTD, eventLocationTD, eventLinkTD);
+            $(event).append(eventDateTD, eventNameTD, eventLinkTD);
             var eventTable = $("<table>");
             $(eventTable).append(event);
             $("#socialEvents").append(eventTable);
