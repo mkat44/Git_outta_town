@@ -1,10 +1,36 @@
+body{
+    height: 1500px;
+}
 .parallax-container{
-    height: 500px;
+    height: 400px;
 }
 #searchButton{
-    height: 44px;
-    width: 150px;
-    margin-top: 15px;
-    font-size: 1.5em;
-    padding-top: 3px;
+    height: 100%;
+    width: 95%;
+    font-size: 1.25em;
+}
+#search{
+    margin-top: 20px;
+}
+#parallaxImage{
+    opacity: 1;
+    height: 750px;
+    margin-bottom: 125px;
+}
+#searchBar{
+    margin-top: 20px;
+    padding-left: 0;
+}
+#searchState{
+    margin-top: 20px;
+    padding-left: 0;
+}
+.input-field input[type=text]:focus{
+    color: #039be5;
+}
+#searchButtonDiv{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
 }
