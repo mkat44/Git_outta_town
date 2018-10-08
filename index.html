@@ -5,55 +5,76 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Git Outta Town - Project 1</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
-    <!-- <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/> -->
+    <link rel="stylesheet" type="text/css" media="screen" href="css/reset.css" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.css"/>
     <link rel="stylesheet" type="text/css" media="screen" href="css/style.css" />
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.js"></script>
     <script src="javascript/app.js"></script>
-    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
 </head>
 <body>
-
-            <div class="input-stuff">
-                <h2 id="searchBar">Boston</h2>
-                <h2 id="searchState">MA</h2>
-                <h2 id="firstDate">2018-10-21</h2>
-                <h2 id="secondDate">2018-10-27</h2>
-                <input id="searchButton" type="submit" value="Submit">
+    <div class="col l12 parallax-container">
+        <div class="parallax"><img src="images/clouds-clouds-form-color-186980.jpg" id="parallaxImage"/></div>
+    </div>
+    <div class="container">
+        <div class="nav-wrapper white" id="search">
+            <div class="row">
+                <div class="input-field col sm12 l8">
+                    <i class="material-icons prefix">search</i>
+                    <input id="searchBar" type="search">
+                    <label for="searchBar">City Name</label>
+                </div>
+                <div class="input-field col sm12 l2 ">
+                    <input id="searchState" type="search">
+                    <label for="searchState">State</label>
+                </div>
+                <div class="col sm 12 l2" id="searchButtonDiv">
+                    <a class="waves-effect waves-light btn light-blue darken-1" id="searchButton">search</a>
+                </div>
             </div>
-            <div id="mainContent"></div>
-            <div class="sportsEvents">
-                <h5>Sports Events</h5>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Date</th>
-                                <th>Time</th>
-                                <th>Name</th>
-                                <th>Location</th>
-                                <th>Link</th>
-                            </tr>
-                        </thead>
-                            <tbody id="sportsTable"></tbody>                
-                    </table>                          
+        </div>
+        <div class="row">
+            <form>
+                <div class="input-field col sm12 l5">
+                    <input id="firstDate" type="date">
+                    <label for="firstDate">Date of Arrival</label>
+                </div>
+                <div class="input-field col sm12 l5">
+                    <input id="secondDate" type="date">
+                    <label for="secondDate">Date of Departure</label>
+                </div>
+            </form>
+        </div>
+        <div class="row">
+            <div class="col l12" id="contentHeader">
+                <h2>
+                    <span id="cityName">City Name</span>
+                </h2>
             </div>
-            <div class="theatreEvents">
-                <h5>Theatre Events</h5>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Date</th>
-                                <th>Time</th>
-                                <th>Name</th>
-                                <th>Location</th>
-                                <th>Link</th>
-                            </tr>
-                        </thead>
-                            <tbody id="theatreTable"></tbody>                
-                    </table>                          
+        </div>
+        <div class="row">
+            <div class="col l12" id="mainContent">
+                <ul class="collapsible col sm12 md6 l6">
+                    <li>
+                        <div class="collapsible-header">Sports</div>
+                        <div class="collapsible-body" id="sportsEvents"></div>
+                    </li>
+                    <li>
+                        <div class="collapsible-header">Music</div>
+                        <div class="collapsible-body" id="musicEvents"></div>
+                    </li>
+                    <li>
+                        <div class="collapsible-header">Food & Drink</div>
+                        <div class="collapsible-body" id="foodDrinkEvents"></div>
+                    </li>
+                    <li>
+                        <div class="collapsible-header">Theater</div>
+                        <div class="collapsible-body" id="theaterEvents"></div>
+                    </li>
+                </ul>
             </div>
-        
-<!-- <script type="text/javascript" src="js/materialize.min.js"></script> -->
+        </div>
+    </div>
 </body>
 </html>
