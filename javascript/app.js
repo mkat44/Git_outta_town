@@ -72,7 +72,7 @@
         console.log(endDate)
         
 
-
+        $("#cityName").text(city + ", " + state);
 
 
 
@@ -272,4 +272,6 @@ else {
 
     };
     });
+
  }
+

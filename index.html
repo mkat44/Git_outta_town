@@ -14,29 +14,35 @@
     <script src="javascript/app.js"></script>
 </head>
 <body>
-    <div class="col l12 parallax-container">
-        <div class="parallax"><img src="images/clouds-clouds-form-color-186980.jpg" id="parallaxImage"/></div>
-    </div>
-    <div class="container">
-        <div class="nav-wrapper white" id="search">
+    <div class="col l12 parallax-container" id="parallaxContainer">
+        <div class="container">
             <div class="row">
-                <div class="input-field col sm12 l8">
-                    <i class="material-icons prefix">search</i>
-                    <input id="searchBar" type="search">
-                    <label for="searchBar">City Name</label>
+                <div class="col l12 white-text" id="paraHeader">
+                    <h2 class="white-text" id="paraHeaderText">Git Outta Town</h2>
+                    <p>Search a City and Date Range</p>
                 </div>
-                <div class="input-field col sm12 l2 ">
-                    <input id="searchState" type="search">
-                    <label for="searchState">State</label>
-                </div>
-                <div class="col sm 12 l2" id="searchButtonDiv">
-                    <a class="waves-effect waves-light btn light-blue darken-1" id="searchButton">search</a>
-                </div>
+            </div>
+        </div>
+        <div class="parallax"><img src="images/grand-teton-national-park-3840x2400-pond-lake-4k-5401.jpg" id="parallaxImage"/></div>
+    </div>
+    <div class="container" id="contentContainer">
+        <div class="row" id="#searchRow">
+            <div class="input-field col sm12 l8" id="searchDiv">
+                <i class="material-icons prefix">search</i>
+                <input id="searchBar" type="search">
+                <label for="searchBar">City Name</label>
+            </div>
+            <div class="input-field col sm12 l3" id="searchDiv2">
+                <input id="searchState" type="search">
+                <label for="searchState">State</label>
+            </div>
+            <div class="col sm 12 l1" id="searchButtonDiv">
+                <a class="waves-effect waves-light btn light-green" id="searchButton">search</a>
             </div>
         </div>
         <div class="row">
             <form>
-                <div class="input-field col sm12 l5">
+                <div class="input-field col sm12 l5" id="firstDateDiv">
                     <input id="firstDate" type="date">
                     <label for="firstDate">Date of Arrival</label>
                 </div>
@@ -57,20 +63,66 @@
             <div class="col l12" id="mainContent">
                 <ul class="collapsible col sm12 md6 l6">
                     <li>
-                        <div class="collapsible-header">Sports</div>
-                        <div class="collapsible-body" id="sportsEvents"></div>
+                        <div class="collapsible-header" id="sportsRow">Sports</div>
+                        <div class="collapsible-body" id="sportsEvents">
+                            <table>
+                                <tr>
+                                    <th>
+                                        Date
+                                    </th>
+                                    <th>
+                                        Time
+                                    </th>
+                                    <th>
+                                        Name
+                                    </th>
+                                    <th>
+                                        Location
+                                    </th>
+                                    <th>
+                                        Link
+                                    </th>
+                                </tr>
+                                <tbody id="sportsTable">
+
+                                </tbody>
+                            </table>
+                        </div>
                     </li>
                     <li>
-                        <div class="collapsible-header" id = "fillerIdMusic">Music</div>
+                        <div class="collapsible-header" id="musicRow">Music</div>
                         <div class="collapsible-body" id="musicEvents"></div>
                     </li>
                     <li>
-                        <div class="collapsible-header" id = "fillerIdFood">Food & Drink</div>
+                        <div class="collapsible-header" id="foodDrinkRow">Food & Drink</div>
                         <div class="collapsible-body" id="foodDrinkEvents"></div>
                     </li>
                     <li>
-                        <div class="collapsible-header" id = "fillerIdTheater">Theater</div>
-                        <div class="collapsible-body" id="theaterEvents"></div>
+                        <div class="collapsible-header" id="theaterRow">Theater</div>
+                        <div class="collapsible-body" id="theaterEvents">
+                            <table>
+                                <tr>
+                                    <th>
+                                        Date
+                                    </th>
+                                    <th>
+                                        Time
+                                    </th>
+                                    <th>
+                                        Name
+                                    </th>
+                                    <th>
+                                        Location
+                                    </th>
+                                    <th>
+                                        Link
+                                    </th>
+                                </tr>
+                                <tbody id="theaterTable">
+
+                                </tbody>
+                            </table>                            
+                        </div>
                     </li>
                     <li>
                         <div class="collapsible-header" id = "fillerIdSocial">Social</div>
@@ -79,6 +131,17 @@
                 </ul>
             </div>
         </div>
+    </div>
+    <div class="col l12 parallax-container" id="parallaxContainer2">
+        <div class="container">
+            <div class="row">
+                <div class="white-text" id="paraFooter">
+                    <h4>&copy; Copyright Edward Sharpe and the Magnetic Zeros Project Group</h4>
+                    <h5>University of Minnesota Coding Bootcamp 2018</h5>
+                </div>
+            </div>
+        </div>
+        <div class="parallax"><img src="images/Landscape-rocky-mountains-snow-sky-with-white-cloud-mountain-river-meadow-with-green-grass-Grand-Teton-National-Park-U.S.-National-Park-Service-1920x1200.jpg" id="parallaxImage2"/></div>
     </div>
 </body>
 </html>
