@@ -12,6 +12,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.js"></script>
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
     <script src="javascript/app.js"></script>
 </head>
 <body>
@@ -20,7 +21,7 @@
             <div class="row">
                 <div class="col l12 white-text" id="paraHeader">
                     <h2 class="white-text" id="paraHeaderText">Git Outta Town</h2>
-                    <p>Search a City and Date Range</p>
+                    <h6>Useful information for your travels</h6>
                 </div>
             </div>
         </div>
@@ -53,74 +54,79 @@
                 </div>
             </form>
         </div>
-        <div class="row">
+        <div class="row grey lighten-3" id="headerRow">
             <div class="col l12" id="contentHeader">
-                <h2>
-                    <span id="cityName">City Name</span>
+                <h2 id="headerText">
+                    <span id="cityName"></span>
                 </h2>
+                <div id="buttonDiv">
+
+                </div>
             </div>
         </div>
         <div class="row">
             <div class="col l12" id="mainContent">
-                <ul class="collapsible col sm12 md6 l6">
-                    <li>
-
-                        <div class="collapsible-header" id="sportsRow">Sports</div>
-                        <div class="collapsible-body" id="sportsEvents">
-                            <table>
-                                <tr>
-                                    <th>
-                                        Date
-                                    </th>
-                                    <th>
-                                        Time
-                                    </th>
-                                    <th>
-                                        Name
-                                    </th>
-                                    <th>
-                                        Location
-                                    </th>
-                                    <th>
-                                        Link
-                                    </th>
-                                </tr>
-                                <tbody id="sportsTable">
-
-                                </tbody>
-                            </table>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="collapsible-header" id="musicRow">Music</div>
-                        <div class="collapsible-body" id="musicEvents"></div>
-                    </li>
-                    <li>
-                        <div class="collapsible-header" id="foodDrinkRow">Food & Drink</div>
-                        <div class="collapsible-body" id="foodDrinkEvents"></div>
-                    </li>
-                    <li>
-                        <div class="collapsible-header" id="theaterRow">Theater</div>
-                        <div class="collapsible-body" id="theaterEvents">
-                            <table>
-                                <tr>
-                                    <th>
-                                        Date
-                                    </th>
-                                    <th>
-                                        Time
-                                    </th>
-                                    <th>
-                                        Name
-                                    </th>
-                                    <th>
-                                        Location
-                                    </th>
-                                    <th>
-                                        Link
-                                    </th>
-                                </tr>
-                                <tbody id="theaterTable">
+                <div class="collapsibleDiv">
+                    <div class="collapsibleHeader">
+                        <h3>Events</h3>
+                    </div>
+                    <ul class="collapsible col sm12 md6 l6">
+                        <li>
+                            <div class="collapsible-header" id="sportsRow">Sports</div>
+                            <div class="collapsible-body" id="sportsEvents">
+                                <table>
+                                    <tr>
+                                        <th>
+                                            Date
+                                        </th>
+                                        <th>
+                                            Time
+                                        </th>
+                                        <th>
+                                            Name
+                                        </th>
+                                        <th>
+                                            Location
+                                        </th>
+                                        <th>
+                                            Link
+                                        </th>
+                                    </tr>
+                                    <tbody id="sportsTable">
+                                    </tbody>
+                                </table>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="collapsible-header" id="musicRow">Music</div>
+                            <div class="collapsible-body" id="musicEvents"></div>
+                        </li>
+                        <li>
+                            <div class="collapsible-header" id="foodDrinkRow">Food & Drink</div>
+                            <div class="collapsible-body" id="foodDrinkEvents"></div>
+                        </li>
+                        <li>
+                            <div class="collapsible-header" id="theaterRow">Theater</div>
+                            <div class="collapsible-body" id="theaterEvents">
+                                <table>
+                                    <tr>
+                                        <th>
+                                            Date
+                                        </th>
+                                        <th>
+                                            Time
+                                        </th>
+                                        <th>
+                                            Name
+                                        </th>
+                                        <th>
+                                            Location
+                                        </th>
+                                        <th>
+                                            Link
+                                        </th>
+                                    </tr>
+                                    <tbody id="theaterTable">
 
                                 </tbody>
                             </table>                            
@@ -133,6 +139,7 @@
                 </ul>
             </div>
         </div>
+    </div>
     </div>
     <div class="col l12 parallax-container" id="parallaxContainer2">
         <div class="container">

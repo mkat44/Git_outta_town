@@ -29,10 +29,15 @@ console.log(today)
 // Here we get the values of the input forms and assign them to the city and state variables to be displayed.
  window.onload = function(){
      $('.parallax').parallax();
-     $('.collapsible').hide();
      $('.collapsible').collapsible();
+     $('.collapsibleDiv').hide();
+     $("#contentHeader").hide();
+     $("#mainContent").hide();
      $("#searchButton").click(function(){
-       displayEventBox();
+        $("#contentHeader").show();
+        $("#mainContent").show();
+        $("#buttonDiv").text("");
+        displayEventBox();
         function displayEventBox(){
 
         var eventBox = $("<div class = event-box>");
@@ -40,7 +45,7 @@ console.log(today)
         $("#mainContent").append(eventBox);
 
         }
-         $('.collapsible').show();
+         $('.collapsibleDiv').show();
          // Setting the city and state variables
         city  = $("#searchBar").val()
         state = $("#searchState").val()
@@ -83,7 +88,8 @@ console.log(today)
             id: 'wikiLinkHolder'
         }).append( $('<div>', {
             id: 'wikiLink'
-        })).append("<a href = '" + fullLink + "'>"+fullLink).appendTo("#mainContent")
+        })).append("<a class='waves-effect waves-light btn light-green' href = '" + fullLink + "'>"+ "Wikipedia").appendTo("#buttonDiv");
+
         // Assigning the start and end date to use in the other API's for events
         console.log($("#firstDate").val(), $("#secondDate").val())
         startDate = $("#firstDate").val() + "T00:00:00"
@@ -102,10 +108,11 @@ console.log(today)
     // needs dates formatted as YYYY-MM-DD+T+HH:MM:SS
     // doesn't currently return anything but a console log; working on pulling out relevant info now
 
-    $(document).on("click", ".collapsible-header", function() {
+    $("#musicRow").on("click", function() {
         // placeholder for keyword to filter searches by
-    var searchKeyword = $(".collapsible-header").val();
+    var searchKeyword = "Music";
     console.log(searchKeyword)
+    $("#musicEvents").empty();
     var queryEB = "https://www.eventbriteapi.com/v3/events/search/?q=" + searchKeyword + "&location.address=" + searchTerm + "&start_date.range_start=" + startDate + "&start_date.range_end=" + endDate + "&token=JYNTN4DWJF75I4XR2WTL";
 
 if (startDate < endDate && startDate >= today)
@@ -144,11 +151,62 @@ if (startDate < endDate && startDate >= today)
             $(event).append(eventDateTD, eventNameTD, eventLocationTD, eventLinkTD);
             var eventTable = $("<table>");
             $(eventTable).append(event);
-            $("#" + searchKeyword).append(eventTable);
+            $("#musicEvents").append(eventTable);
         }
     })
 else {
     console.error("ERROR: Invalid date!")
+}
+})
+
+$("#foodDrinkRow").on("click", function() {
+    // placeholder for keyword to filter searches by
+var searchKeyword = "Food and Drink";
+console.log(searchKeyword)
+$("#foodDrinkEvents").empty();
+var queryEB = "https://www.eventbriteapi.com/v3/events/search/?q=" + searchKeyword + "&location.address=" + searchTerm + "&start_date.range_start=" + startDate + "&start_date.range_end=" + endDate + "&token=JYNTN4DWJF75I4XR2WTL";
+
+if (startDate < endDate)
+$.ajax({
+    url: queryEB,
+    method: "GET"
+}).then(function(response) {
+    console.log(response);
+    for (i = 0; i < response.pagination.object_count; i++) {
+        var eventName = response.events[i].name.text;
+        var eventLink = "<a href='" + response.events[i].url + "' + target='_blank'><button>More Info</button></a>";
+        var eventDate = moment(response.events[i].start.local).format("MM/DD/YYYY");
+        var eventTime = moment(response.events[i].start.local, "HH:mm:ss").format("hh:mm a");
+        var eventLocation = response.events[i].venue_id;
+        var eventVenue = "";
+        var queryEvent = "https://www.eventbriteapi.com/v3/venues/" + eventLocation + "/?token=JYNTN4DWJF75I4XR2WTL";
+
+        $.ajax({
+            url: queryEvent,
+            method: "GET"
+        }).then(function(response) {
+            var eventVenue = response.address.address_1;
+        });
+
+        var event = $("<tr>");
+        var eventDateTD = $("<td>");
+        var eventTimeTD = $("<td>");
+        var eventNameTD = $("<td>");
+        var eventLocationTD = $("<td>");
+        var eventLinkTD = $("<td>");
+        $(eventDateTD).append(eventDate);
+        $(eventTimeTD).append(eventTime);
+        $(eventNameTD).append(eventName);
+        $(eventLocationTD).append(eventVenue);
+        $(eventLinkTD).append(eventLink);
+        $(event).append(eventDateTD, eventNameTD, eventLocationTD, eventLinkTD);
+        var eventTable = $("<table>");
+        $(eventTable).append(event);
+        $("#foodDrinkEvents").append(eventTable);
+    }
+})
+else {
+console.log("ERROR: Start date is further than end date")
 }
 })
 
@@ -175,7 +233,9 @@ else {
 // needs cities as LON (longitude) & LAT (latitude)
 // doesn't currently return anything but a console log; working on pulling out relevant info now
 
+
 $("#fillerIdSocial").on("click", function() {
+    $("#socialEvents").empty();
     var queryMeetup = "https://api.meetup.com/find/upcoming_events/?key=50714b3e1a91d102f757e2e3b466057&start_date_range=" + startDate + "&end_date_range=" + endDate + "&lat=" + searchLAT + "&lon=" + searchLON;
 
 if (startDate < endDate && startDate >= today) {
