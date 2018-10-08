@@ -75,7 +75,7 @@
         
         
 
-
+        $("#cityName").text(city + ", " + state);
 
 
     searchTerm = city + "+" + state
@@ -281,4 +281,6 @@ else {
 
     };
     });
+
  }
+
