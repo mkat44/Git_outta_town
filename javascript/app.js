@@ -10,10 +10,10 @@
  var searchLON = ""
  var searchLAT = ""
  var searchTerm
-
+// Setting up the current date to check to make sure the startDate >= the current date
  var today = new Date();
  var dd = today.getDate();
- var mm = today.getMonth()+1; //January is 0!
+ var mm = today.getMonth()+1;
  var yyyy = today.getFullYear();
 
  if(dd<10) {
@@ -46,6 +46,7 @@ console.log(today)
         // Making the cities first character uppercase and making state all uppercase.
         city = city.toLowerCase()
         city = city.charAt(0).toUpperCase() + city.slice(1)
+        console.log(city)
         function capitalize(str) {
             var arr = []
             var sep = str.split(" ")
@@ -56,7 +57,7 @@ console.log(today)
         }
         city = capitalize(city)
         state = state.toUpperCase()
-        
+
 
         var fullLink = link + city + ", " + state
         console.log(fullLink)
