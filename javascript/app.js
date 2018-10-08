@@ -86,20 +86,8 @@
     var searchKeyword = $(".collapsible-header").val();
 
     searchTerm = city + "+" + state
-    // mapquest geolocation api
-    // takes city,state and gives us lat/lon for other apis
-    // This code will be called as soon as the Search button is clicked in order to assign those variables.
-
- 
 
 
-    // meetup
-    // Need new on click function here
-    // needs dates formatted as YYYY-MM-DD+T+HH:MM:SS
-    // needs cities as LON (longitude) & LAT (latitude)
-    // doesn't currently return anything but a console log; working on pulling out relevant info now
-    // This code won't be called until it is told to.  So uppon the click of a button
-        
     // eventbrite
     // Need new on click function here.
     // needs dates formatted as YYYY-MM-DD+T+HH:MM:SS
@@ -202,6 +190,7 @@ if (startDate < endDate) {
 else {
     console.log("ERROR:  Start date is further than end date!")
 }
+
    $(document).on("click", "#sportsEvents", fetchEvents);
    // Sets up a click handler for selecting the theatre tab
    $(document).on("click", "#theatreEvents", fetchEvents);
