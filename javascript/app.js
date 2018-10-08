@@ -88,7 +88,7 @@ console.log(today)
         console.log(endDate)
 
 
-
+        $("#cityName").text(city + ", " + state);
 
 
 
@@ -276,5 +276,11 @@ else {
 
     };
     });
+<<<<<<< HEAD
 })
 }
+=======
+
+ }
+
+>>>>>>> 54c044d75f6a21bd516ccb134104e72ba9d6356e
