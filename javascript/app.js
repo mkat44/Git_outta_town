@@ -66,6 +66,10 @@
 
 
 
+
+// placeholder for keyword to filter searches by
+    var searchKeyword = $(".collapsible-header").val();
+
     searchTerm = city + "+" + state
     // mapquest geolocation api
     // takes city,state and gives us lat/lon for other apis
@@ -111,6 +115,35 @@
         method: "GET"
     }).then(function(response) {
         console.log(response);
+        for (i = 0; i < response.pagination.object_count; i++) {
+            var eventName = response.events[i].name.text;
+            var eventLink = response.events[i].url;
+            var eventDate = moment(response.events[i].start.local).format("MM/DD/YYYY");
+            var eventTime = moment(response.events[i].star.local).format("hh:mm a");
+            var eventLocation = response.events[i].venue_id;
+            var eventVenue = "";
+            var queryEvent = "https://www.eventbriteapi.com/v3/venues/" + eventLocation + "/?token=JYNTN4DWJF75I4XR2WTL";
+
+            $.ajax({
+                url: queryEvent,
+                method: "GET"
+            }).then(function(response) {
+                var eventVenue = response.address.address_1;
+            });
+
+            var event = $("<tr>");
+            var eventDateTD = $("<td>");
+            var eventTimeTD = $("<td>");
+            var eventNameTD = $("<td>");
+            var eventLocationTD = $("<td>");
+            var eventLinkTD = $("<td>");
+            $(eventDateTD).append(eventDate);
+            $(eventTimeTD).append(eventTime);
+            $(eventNameTD).append(eventName);
+            $(eventLocationTD).append(eventVenue);
+            $(eventLinkTD).append(eventLink);
+            $(event).append(eventDateTD, eventNameTD, eventLocationTD, eventLinkTD);
+        }
     })
 
 
@@ -120,6 +153,7 @@
     var queryLocation = "http://www.mapquestapi.com/geocoding/v1/address?key=QxUvIdV0SxYVrEFvZBdqCWOBVABMZZkd&location=" + searchTerm;
     var searchLON
     var searchLAT
+
     $.ajax({
         url: queryLocation,
         method: "GET"
@@ -136,10 +170,31 @@
 // doesn't currently return anything but a console log; working on pulling out relevant info now
     // var queryMeetup = "https://api.meetup.com/find/upcoming_events/?key=50714b3e1a91d102f757e2e3b466057&start_date_range=" + STARTDATE + "&end_date_range=" + ENDDATE + "&lat=" + searchLAT + "&lon=" + searchLON;
 
-    // $.ajax({
-    //     url: queryMeetup,
-    //     method: "GET"
-    // }).then(function(response) {
-    //     console.log(response);
-    // })
- 
+
+    $.ajax({
+        url: queryMeetup,
+        method: "GET"
+    }).then(function(response) {
+        console.log(response);
+        for (i = 0; i < response.events.length; i++) {
+            var eventName = response.events[i].name;
+            var eventDate = moment(response.events[i].local_date).format("MM/DD/YYYY");
+            var eventTime = moment(response.events[i].local_time).format("hh:mm a");
+            var eventLocation = response.events[i].venue.address_1;
+            var eventLink = response.events[i].link;
+
+            var event = $("<tr>");
+            var eventDateTD = $("<td>");
+            var eventTimeTD = $("<td>");
+            var eventNameTD = $("<td>");
+            var eventLocationTD = $("<td>");
+            var eventLinkTD = $("<td>");
+            $(eventDateTD).append(eventDate);
+            $(eventTimeTD).append(eventTime);
+            $(eventNameTD).append(eventName);
+            $(eventLocationTD).append(eventLocation);
+            $(eventLinkTD).append(eventLink);
+            $(event).append(eventDateTD, eventNameTD, eventLocationTD, eventLinkTD);
+        }
+    })
+
