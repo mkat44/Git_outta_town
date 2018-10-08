@@ -1,38 +1,156 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-
-        <meta charset="utf-8">
-
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-                      
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.9/css/weather-icons.min.css" rel="stylesheet">
-        
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-        
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-        
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-      
-    </head>
-
-                   
-    <body>
-
-            <div class="container">
-                    <div class="row">
-                        <h3 class="text-center text-primary">Enter City Name</h3>
-                        <span id="error"></span>	
-                    </div>
-          
-                    <div class="row form-group form-inline" id="rowDiv">
-                        <input type="text" name="city" id='city' class="form-control" placeholder="Minneapolis">
-                        <button id="submitWeather" class="btn btn-primary">Search</button>
-                    </div>
-          
-                    <div id="show"></div>
-          
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Git Outta Town - Project 1</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="css/reset.css" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.css"/>
+    <link rel="stylesheet" type="text/css" media="screen" href="css/style.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.js"></script>
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+    <script src="javascript/app.js"></script>
+</head>
+<body>
+    <div class="col l12 parallax-container" id="parallaxContainer">
+        <div class="container">
+            <div class="row">
+                <div class="col l12 white-text" id="paraHeader">
+                    <h2 class="white-text" id="paraHeaderText">Git Outta Town</h2>
+                    <h6>Useful information for your travels</h6>
                 </div>
-        <script src="logic.js"></script>
-    </body>
+            </div>
+        </div>
+        <div class="parallax"><img src="images/grand-teton-national-park-3840x2400-pond-lake-4k-5401.jpg" id="parallaxImage"/></div>
+    </div>
+    <div class="container" id="contentContainer">
+        <div class="row" id="#searchRow">
+            <div class="input-field col sm12 l8" id="searchDiv">
+                <i class="material-icons prefix">search</i>
+                <input id="searchBar" type="search">
+                <label for="searchBar">City Name</label>
+            </div>
+            <div class="input-field col sm12 l3" id="searchDiv2">
+                <input id="searchState" type="search">
+                <label for="searchState">State</label>
+            </div>
+            <div class="col sm 12 l1" id="searchButtonDiv">
+                <a class="waves-effect waves-light btn light-green" id="searchButton">search</a>
+            </div>
+        </div>
+        <div class="row">
+            <form>
+                <div class="input-field col sm12 l5" id="firstDateDiv">
+                    <input id="firstDate" type="date">
+                    <label for="firstDate">Date of Arrival</label>
+                </div>
+                <div class="input-field col sm12 l5">
+                    <input id="secondDate" type="date">
+                    <label for="secondDate">Date of Departure</label>
+                </div>
+            </form>
+        </div>
+        <div class="row grey lighten-3" id="headerRow">
+            <div class="col l12" id="contentHeader">
+                <h2 id="headerText">
+                    <span id="cityName"></span>
+                </h2>
+                <div id="buttonDiv">
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col l12" id="mainContent">
+                <div class="collapsibleDiv">
+                    <div class="collapsibleHeader">
+                        <h3>Events</h3>
+                    </div>
+                    <ul class="collapsible col sm12 md6 l6">
+                        <li>
+                            <div class="collapsible-header" id="sportsRow">Sports</div>
+                            <div class="collapsible-body" id="sportsEvents">
+                                <table>
+                                    <tr>
+                                        <th>
+                                            Date
+                                        </th>
+                                        <th>
+                                            Time
+                                        </th>
+                                        <th>
+                                            Name
+                                        </th>
+                                        <th>
+                                            Location
+                                        </th>
+                                        <th>
+                                            Link
+                                        </th>
+                                    </tr>
+                                    <tbody id="sportsTable">
+                                    </tbody>
+                                </table>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="collapsible-header" id="musicRow">Music</div>
+                            <div class="collapsible-body" id="musicEvents"></div>
+                        </li>
+                        <li>
+                            <div class="collapsible-header" id="foodDrinkRow">Food & Drink</div>
+                            <div class="collapsible-body" id="foodDrinkEvents"></div>
+                        </li>
+                        <li>
+                            <div class="collapsible-header" id="theaterRow">Theater</div>
+                            <div class="collapsible-body" id="theaterEvents">
+                                <table>
+                                    <tr>
+                                        <th>
+                                            Date
+                                        </th>
+                                        <th>
+                                            Time
+                                        </th>
+                                        <th>
+                                            Name
+                                        </th>
+                                        <th>
+                                            Location
+                                        </th>
+                                        <th>
+                                            Link
+                                        </th>
+                                    </tr>
+                                    <tbody id="theaterTable">
+
+                                </tbody>
+                            </table>                            
+                        </div>
+                    </li>
+                    <li>
+                        <div class="collapsible-header" id = "fillerIdSocial">Social</div>
+                        <div class="collapsible-body" id="socialEvents"></div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="col l12 parallax-container" id="parallaxContainer2">
+        <div class="container">
+            <div class="row">
+                <div class="white-text" id="paraFooter">
+                    <h4>&copy; Copyright Edward Sharpe and the Magnetic Zeros Project Group</h4>
+                    <h5>University of Minnesota Coding Bootcamp 2018</h5>
+                </div>
+            </div>
+        </div>
+        <div class="parallax"><img src="images/Landscape-rocky-mountains-snow-sky-with-white-cloud-mountain-river-meadow-with-green-grass-Grand-Teton-National-Park-U.S.-National-Park-Service-1920x1200.jpg" id="parallaxImage2"/></div>
+    </div>
+</body>
 </html>

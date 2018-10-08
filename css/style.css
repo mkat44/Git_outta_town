@@ -1,0 +1,76 @@
+body{
+    height: 1500px;
+}
+#parallaxContainer{
+    height: 325px;
+}
+#contentContainer{
+    min-height: 1000px;
+}
+#searchButton{
+    height: 100%;
+    width: 105px;
+    font-size: 1.25em;
+}
+#search{
+    margin-top: 20px;
+}
+#parallaxImage{
+    opacity: 1;
+    height: 600px;
+    width: 1200px;
+}
+#searchBar{
+    margin-top: 20px;
+    padding-left: 0;
+}
+#searchState{
+    margin-top: 20px;
+    padding-left: 0;
+}
+.input-field input[type=text]:focus{
+    color: #039be5;
+}
+#searchButtonDiv{
+    margin-top: 2.75rem;
+    margin-bottom: 1rem;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+}
+#paraHeader{
+    margin-top: 180px;
+    margin-left: 12px;
+}
+#paraHeaderText{
+    margin-left:-1px;
+}
+#firstDateDiv{
+    margin-left: 4%;
+}
+#searchDiv{
+    margin-top: 25px;
+}
+#searchDiv2{
+    margin-top: 25px;
+}
+#parallaxImage2{
+    height: 200%;
+}
+#parallaxContainer2{
+    height: 200px;
+}
+#parafooter{
+    text-align: center;
+}
+#headerText{
+    margin-bottom: 5px;
+}
+#buttonDiv{
+    margin-bottom: 10px;
+}
+#mainContent{
+    border: 1px solid #eeeeee;
+}
+#paraFooter{
+    padding-top: 15px;
+}
