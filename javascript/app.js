@@ -20,12 +20,6 @@
 
         var eventBox = $("<div class = event-box>");
 
-        var sportsButton = $("<input id=sportsEvents class=eventH type=submit value=Sports>");
-        var theatreButton = $("<input id=theatreEvents class=eventH type=submit value=Theatre>");
-
-        eventBox.append(sportsButton);
-        eventBox.append(theatreButton);
-
         $("#mainContent").append(eventBox);
 
         }
@@ -157,6 +151,8 @@ else {
 // needs dates formatted as YYYY-MM-DD+T+HH:MM:SS
 // needs cities as LON (longitude) & LAT (latitude)
 // doesn't currently return anything but a console log; working on pulling out relevant info now
+
+$("#fillerIdSocial").on("click", function() {
     var queryMeetup = "https://api.meetup.com/find/upcoming_events/?key=50714b3e1a91d102f757e2e3b466057&start_date_range=" + startDate + "&end_date_range=" + endDate + "&lat=" + searchLAT + "&lon=" + searchLON;
 
 if (startDate < endDate) {
@@ -168,7 +164,7 @@ if (startDate < endDate) {
         for (i = 0; i < response.events.length; i++) {
             var eventName = response.events[i].name;
             var eventDate = moment(response.events[i].local_date).format("MM/DD/YYYY");
-            var eventTime = moment(response.events[i].local_time).format("hh:mm a");
+            var eventTime = moment(response.events[i].local_time, "HH:mm:ss").format("hh:mm a");
             var eventLocation = response.events[i].venue.address_1;
             var eventLink = response.events[i].link;
 
@@ -184,13 +180,18 @@ if (startDate < endDate) {
             $(eventLocationTD).append(eventLocation);
             $(eventLinkTD).append(eventLink);
             $(event).append(eventDateTD, eventNameTD, eventLocationTD, eventLinkTD);
+            $("#socialEvents").append(event);
         }
     })
 }
 else {
     console.log("ERROR:  Start date is further than end date!")
 }
+<<<<<<< HEAD
 
+=======
+})
+>>>>>>> eaa193f2a21efaa1839d2a05c65ed3b4875a9b69
    $(document).on("click", "#sportsEvents", fetchEvents);
    // Sets up a click handler for selecting the theatre tab
    $(document).on("click", "#theatreEvents", fetchEvents);
