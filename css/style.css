@@ -62,3 +62,15 @@ body{
 #parafooter{
     text-align: center;
 }
+#headerText{
+    margin-bottom: 5px;
+}
+#buttonDiv{
+    margin-bottom: 10px;
+}
+#mainContent{
+    border: 1px solid #eeeeee;
+}
+#paraFooter{
+    padding-top: 15px;
+}

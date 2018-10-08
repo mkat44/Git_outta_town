@@ -13,9 +13,15 @@
 // Here we get the values of the input forms and assign them to the city and state variables to be displayed.
  window.onload = function(){
      $('.parallax').parallax();
-     $('.collapsible').hide();
+     $('.collapsible').collapsible();
+     $('.collapsibleDiv').hide();
+     $("#contentHeader").hide();
+     $("#mainContent").hide();
      $("#searchButton").click(function(){
-       displayEventBox();
+        $("#contentHeader").show();
+        $("#mainContent").show();
+        $("#buttonDiv").text("");
+        displayEventBox();
         function displayEventBox(){
 
         var eventBox = $("<div class = event-box>");
@@ -23,7 +29,7 @@
         $("#mainContent").append(eventBox);
 
         }
-         $('.collapsible').show();
+         $('.collapsibleDiv').show();
          // Setting the city and state variables
         city  = $("#searchBar").val()
         state = $("#searchState").val()
@@ -63,7 +69,8 @@
             id: 'wikiLinkHolder'
         }).append( $('<div>', {
             id: 'wikiLink'
-        })).append("<a href = '" + fullLink + "'>"+fullLink).appendTo("#mainContent")
+        })).append("<a class='waves-effect waves-light btn light-green' href = '" + fullLink + "'>"+ "Wikipedia").appendTo("#buttonDiv");
+
         // Assigning the start and end date to use in the other API's for events
         console.log($("#firstDate").val(), $("#secondDate").val())
         startDate = $("#firstDate").val() + "T00:00:00"
@@ -71,10 +78,7 @@
         console.log(startDate)
         console.log(endDate)
         
-
         $("#cityName").text(city + ", " + state);
-
-
 
 // placeholder for keyword to filter searches by
     var searchKeyword = $(".collapsible-header").val();
@@ -111,7 +115,7 @@ if (startDate < endDate)
             var eventName = response.events[i].name.text;
             var eventLink = response.events[i].url;
             var eventDate = moment(response.events[i].start.local).format("MM/DD/YYYY");
-            var eventTime = moment(response.events[i].star.local).format("hh:mm a");
+            var eventTime = moment(response.events[i].start.local).format("hh:mm a");
             var eventLocation = response.events[i].venue_id;
             var eventVenue = "";
             var queryEvent = "https://www.eventbriteapi.com/v3/venues/" + eventLocation + "/?token=JYNTN4DWJF75I4XR2WTL";
@@ -164,7 +168,7 @@ else {
 // needs cities as LON (longitude) & LAT (latitude)
 // doesn't currently return anything but a console log; working on pulling out relevant info now
 
-$("#fillerIdSocial").on("click", function() {
+$("#socialRow").on("click", function() {
     var queryMeetup = "https://api.meetup.com/find/upcoming_events/?key=50714b3e1a91d102f757e2e3b466057&start_date_range=" + startDate + "&end_date_range=" + endDate + "&lat=" + searchLAT + "&lon=" + searchLON;
 
 if (startDate < endDate) {
