@@ -47,6 +47,9 @@ console.log(today)
         // Making the cities first character uppercase and making state all uppercase.
         city = city.toLowerCase()
         city = city.charAt(0).toUpperCase() + city.slice(1)
+
+        city = city.replace("-", " - ")
+
         console.log(city)
         function capitalize(str) {
             var arr = []
@@ -59,10 +62,9 @@ console.log(today)
         city = capitalize(city)
         state = state.toUpperCase()
 
-
         var fullLink = link + city + ", " + state
         console.log(fullLink)
-
+        city = city.replace(" - ", "-")
     
 
 
