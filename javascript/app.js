@@ -10,6 +10,22 @@
  var searchLON = ""
  var searchLAT = ""
  var searchTerm
+
+ var today = new Date();
+ var dd = today.getDate();
+ var mm = today.getMonth()+1; //January is 0!
+ var yyyy = today.getFullYear();
+
+ if(dd<10) {
+    dd = '0'+dd
+ } 
+
+ if(mm<10) {
+    mm = '0'+mm
+ } 
+
+today = yyyy + '-' + mm + '-' + dd + "T00:00:00";
+console.log(today)
 // Here we get the values of the input forms and assign them to the city and state variables to be displayed.
  window.onload = function(){
      $('.parallax').parallax();
@@ -70,7 +86,7 @@
         endDate   = $("#secondDate").val() + "T00:00:00"
         console.log(startDate)
         console.log(endDate)
-        
+
 
 
 
@@ -89,7 +105,7 @@
 
     var queryEB = "https://www.eventbriteapi.com/v3/events/search/?q=" + searchTerm + "&start_date.range_start=" + startDate + "&start_date.range_end=" + endDate + "&token=JYNTN4DWJF75I4XR2WTL";
 
-if (startDate < endDate)
+if (startDate < endDate && startdate >= today)
     $.ajax({
         url: queryEB,
         method: "GET"
@@ -155,7 +171,7 @@ else {
 $("#fillerIdSocial").on("click", function() {
     var queryMeetup = "https://api.meetup.com/find/upcoming_events/?key=50714b3e1a91d102f757e2e3b466057&start_date_range=" + startDate + "&end_date_range=" + endDate + "&lat=" + searchLAT + "&lon=" + searchLON;
 
-if (startDate < endDate) {
+if (startDate < endDate && startDate >= today) {
     $.ajax({
         url: queryMeetup,
         method: "GET"
@@ -187,11 +203,7 @@ if (startDate < endDate) {
 else {
     console.log("ERROR:  Start date is further than end date!")
 }
-<<<<<<< HEAD
 
-=======
-})
->>>>>>> eaa193f2a21efaa1839d2a05c65ed3b4875a9b69
    $(document).on("click", "#sportsEvents", fetchEvents);
    // Sets up a click handler for selecting the theatre tab
    $(document).on("click", "#theatreEvents", fetchEvents);
@@ -264,4 +276,5 @@ else {
 
     };
     });
- }
+})
+}
