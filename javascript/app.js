@@ -105,7 +105,7 @@ console.log(today)
 
     var queryEB = "https://www.eventbriteapi.com/v3/events/search/?q=" + searchTerm + "&start_date.range_start=" + startDate + "&start_date.range_end=" + endDate + "&token=JYNTN4DWJF75I4XR2WTL";
 
-if (startDate < endDate && startdate >= today)
+if (startDate < endDate && startDate >= today)
     $.ajax({
         url: queryEB,
         method: "GET"
@@ -142,7 +142,7 @@ if (startDate < endDate && startdate >= today)
         }
     })
 else {
-    console.log("ERROR: Start date is further than end date")
+    console.error("ERROR: Invalid date!")
 }
 
 // mapquest geolocation api
@@ -201,7 +201,7 @@ if (startDate < endDate && startDate >= today) {
     })
 }
 else {
-    console.log("ERROR:  Start date is further than end date!")
+    console.error("ERROR: Invalid date!")
 }
 
    $(document).on("click", "#sportsEvents", fetchEvents);
@@ -276,11 +276,5 @@ else {
 
     };
     });
-<<<<<<< HEAD
 })
 }
-=======
-
- }
-
->>>>>>> 54c044d75f6a21bd516ccb134104e72ba9d6356e
