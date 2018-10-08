@@ -14,10 +14,15 @@
 // Here we get the values of the input forms and assign them to the city and state variables to be displayed.
  window.onload = function(){
      $('.parallax').parallax();
-     $('.collapsible').hide();
      $('.collapsible').collapsible();
+     $('.collapsibleDiv').hide();
+     $("#contentHeader").hide();
+     $("#mainContent").hide();
      $("#searchButton").click(function(){
-       displayEventBox();
+        $("#contentHeader").show();
+        $("#mainContent").show();
+        $("#buttonDiv").text("");
+        displayEventBox();
         function displayEventBox(){
 
         var eventBox = $("<div class = event-box>");
@@ -25,7 +30,7 @@
         $("#mainContent").append(eventBox);
 
         }
-         $('.collapsible').show();
+         $('.collapsibleDiv').show();
          // Setting the city and state variables
         city  = $("#searchBar").val()
         state = $("#searchState").val()
@@ -65,7 +70,8 @@
             id: 'wikiLinkHolder'
         }).append( $('<div>', {
             id: 'wikiLink'
-        })).append("<a href = '" + fullLink + "'>"+fullLink).appendTo("#mainContent")
+        })).append("<a class='waves-effect waves-light btn light-green' href = '" + fullLink + "'>"+ "Wikipedia").appendTo("#buttonDiv");
+
         // Assigning the start and end date to use in the other API's for events
         console.log($("#firstDate").val(), $("#secondDate").val())
         startDate = $("#firstDate").val() + "T00:00:00"
@@ -222,6 +228,7 @@ console.log("ERROR: Start date is further than end date")
 // needs dates formatted as YYYY-MM-DD+T+HH:MM:SS
 // needs cities as LON (longitude) & LAT (latitude)
 // doesn't currently return anything but a console log; working on pulling out relevant info now
+
 
 $("#fillerIdSocial").on("click", function() {
     $("#socialEvents").empty();
