@@ -7,25 +7,18 @@
  var state = ""
  var startDate = ""
  var endDate = ""
- var searchLON 
- var searchLAT
+ var searchLON = ""
+ var searchLAT = ""
  var searchTerm
 // Here we get the values of the input forms and assign them to the city and state variables to be displayed.
  window.onload = function(){
      $('.parallax').parallax();
-     $('.collapsible').collapsible();
      $('.collapsible').hide();
      $("#searchButton").click(function(){
        displayEventBox();
         function displayEventBox(){
 
         var eventBox = $("<div class = event-box>");
-
-        var sportsButton = $("<input id=sportsEvents class=eventH type=submit value=Sports>");
-        var theatreButton = $("<input id=theatreEvents class=eventH type=submit value=Theatre>");
-
-        eventBox.append(sportsButton);
-        eventBox.append(theatreButton);
 
         $("#mainContent").append(eventBox);
 
@@ -79,7 +72,7 @@
         console.log(endDate)
         
 
-
+        $("#cityName").text(city + ", " + state);
 
 
 
@@ -91,22 +84,7 @@
     // takes city,state and gives us lat/lon for other apis
     // This code will be called as soon as the Search button is clicked in order to assign those variables.
 
-        var queryLocation = "http://www.mapquestapi.com/geocoding/v1/address?key=QxUvIdV0SxYVrEFvZBdqCWOBVABMZZkd&location=" + searchTerm;
-    if (startDate < endDate)
-        $.ajax({
-            url: queryLocation,
-            method: "GET"
-        }).then(function(response) {
-            console.log(response)
-            searchLAT = response.results[0].locations[0].latLng.lat;
-            searchLON = response.results[0].locations[0].latLng.lng;
-            
-        })
-    else {
-        console.log("ERROR:  Invalid user input date: Starting date is further than ending date!")
-    }
-    
-    
+ 
 
 
     // meetup
@@ -116,18 +94,6 @@
     // doesn't currently return anything but a console log; working on pulling out relevant info now
     // This code won't be called until it is told to.  So uppon the click of a button
         
-        var queryMeetup = "https://api.meetup.com/find/upcoming_events/?key=50714b3e1a91d102f757e2e3b466057&start_date_range=" + startDate + "&end_date_range=" + endDate + "&lat=" + searchLAT + "&lon=" + searchLON;
-    if (startDate < endDate) {
-        $.ajax({
-            url: queryMeetup,
-            method: "GET"
-        }).then(function(response) {
-            console.log(response);
-        })
-    }
-    else {
-        console.log("ERROR: Invalid user input date:  Starting date is further than ending date!")
-    }
     // eventbrite
     // Need new on click function here.
     // needs dates formatted as YYYY-MM-DD+T+HH:MM:SS
@@ -135,18 +101,7 @@
 
     var queryEB = "https://www.eventbriteapi.com/v3/events/search/?q=" + searchTerm + "&start_date.range_start=" + startDate + "&start_date.range_end=" + endDate + "&token=JYNTN4DWJF75I4XR2WTL";
 
-    if (startDate < endDate)
-        $.ajax({
-            url: queryEB,
-            method: "GET"
-        }).then(function(response) {
-            console.log(response);
-        })
-    else {
-        console.log("ERROR: Invalid user input date:  Starting date is further than ending date!")
-    }
-    });
-
+if (startDate < endDate)
     $.ajax({
         url: queryEB,
         method: "GET"
@@ -182,14 +137,15 @@
             $(event).append(eventDateTD, eventNameTD, eventLocationTD, eventLinkTD);
         }
     })
-
+else {
+    console.log("ERROR: Start date is further than end date")
+}
 
 // mapquest geolocation api
 // takes city,state and gives us lat/lon for other apis
 
     var queryLocation = "http://www.mapquestapi.com/geocoding/v1/address?key=QxUvIdV0SxYVrEFvZBdqCWOBVABMZZkd&location=" + searchTerm;
-    var searchLON
-    var searchLAT
+
 
     $.ajax({
         url: queryLocation,
@@ -198,6 +154,8 @@
         console.log(response)
         searchLAT = response.results[0].locations[0].latLng.lat;
         searchLON = response.results[0].locations[0].latLng.lng;
+        searchLAT = searchLAT.toString()
+        searchLON = searchLON.toString()
         console.log(searchLAT, searchLON);
     })
 
@@ -205,9 +163,11 @@
 // needs dates formatted as YYYY-MM-DD+T+HH:MM:SS
 // needs cities as LON (longitude) & LAT (latitude)
 // doesn't currently return anything but a console log; working on pulling out relevant info now
-    // var queryMeetup = "https://api.meetup.com/find/upcoming_events/?key=50714b3e1a91d102f757e2e3b466057&start_date_range=" + STARTDATE + "&end_date_range=" + ENDDATE + "&lat=" + searchLAT + "&lon=" + searchLON;
 
+$("#fillerIdSocial").on("click", function() {
+    var queryMeetup = "https://api.meetup.com/find/upcoming_events/?key=50714b3e1a91d102f757e2e3b466057&start_date_range=" + startDate + "&end_date_range=" + endDate + "&lat=" + searchLAT + "&lon=" + searchLON;
 
+if (startDate < endDate) {
     $.ajax({
         url: queryMeetup,
         method: "GET"
@@ -216,7 +176,7 @@
         for (i = 0; i < response.events.length; i++) {
             var eventName = response.events[i].name;
             var eventDate = moment(response.events[i].local_date).format("MM/DD/YYYY");
-            var eventTime = moment(response.events[i].local_time).format("hh:mm a");
+            var eventTime = moment(response.events[i].local_time, "HH:mm:ss").format("hh:mm a");
             var eventLocation = response.events[i].venue.address_1;
             var eventLink = response.events[i].link;
 
@@ -232,8 +192,14 @@
             $(eventLocationTD).append(eventLocation);
             $(eventLinkTD).append(eventLink);
             $(event).append(eventDateTD, eventNameTD, eventLocationTD, eventLinkTD);
+            $("#socialEvents").append(event);
         }
     })
+}
+else {
+    console.log("ERROR:  Start date is further than end date!")
+}
+})
    $(document).on("click", "#sportsEvents", fetchEvents);
    // Sets up a click handler for selecting the theatre tab
    $(document).on("click", "#theatreEvents", fetchEvents);
@@ -246,10 +212,7 @@
         console.log("event = " + event);
 
         // Gets the input data from the DOM
-        cityName = $("#searchBar").text();
-        stateName = $("#searchState").text();
-        startDate = $("#firstDate").text();
-        endDate = $("#secondDate").text();
+
         console.log("cityName = " + cityName);
         // Sets up the query url based on the input data and event type
         var queryURL = "https://app.ticketmaster.com/discovery/v2/events.json?city=" + cityName + "&stateCode=" + stateName + "&startDateTime=" + startDate +"T00%3A00%3A00Z&endDateTime=" + endDate + "T23%3A59%3A00Z&keyword=" + event + "&sort=date,asc&apikey=FJe0EUZsiu36JGLaKJ0OTRG6MUalTIbh";
@@ -308,4 +271,5 @@
         }
 
     };
-}
+    });
+ }
