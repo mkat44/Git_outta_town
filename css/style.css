@@ -1,9 +1,14 @@
-.eventBoxH{
+.event-box, .input-stuff{
     margin: 20px;
     border: solid 2px black;
     width: 15%;
+    padding: 10px;
 }
 
 .eventH{
-    margin: 20px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+.more-info-button{
+    width: 100%;
 }
