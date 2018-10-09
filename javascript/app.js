@@ -240,7 +240,6 @@ $("#fillerIdSocial").on("click", function() {
     $("#socialEvents").empty();
     var queryMeetup = "https://api.meetup.com/find/upcoming_events/?key=50714b3e1a91d102f757e2e3b466057&start_date_range=" + startDate + "&end_date_range=" + endDate + "&lat=" + searchLAT + "&lon=" + searchLON;
 
-if (startDate < endDate && startDate >= today) {
     $.ajax({
         url: queryMeetup,
         method: "GET"
@@ -249,7 +248,7 @@ if (startDate < endDate && startDate >= today) {
         for (i = 0; i < response.events.length; i++) {
             var eventName = response.events[i].name;
             var eventDate = moment(response.events[i].local_date).format("MM/DD/YYYY");
-            var eventTime = moment(response.events[i].local_time, "HH:mm:ss").format("hh:mm a");
+            var eventTime = moment(response.events[i].local_time, "HH:mm:ss").format("hh:mm a");        
             var eventLocation = response.events[i].venue.address_1;
             var eventLink = "<a href='" + response.events[i].link + "' + target='_blank'><button>More Info</button></a>";
 
@@ -270,11 +269,6 @@ if (startDate < endDate && startDate >= today) {
             $("#socialEvents").append(eventTable);
         }
     })
-}
-else {
-    console.error("ERROR: Invalid date!")
-}
-
    $(document).on("click", "#sportsEvents", fetchEvents);
    // Sets up a click handler for selecting the theatre tab
    $(document).on("click", "#theatreEvents", fetchEvents);
