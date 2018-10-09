@@ -163,12 +163,10 @@ console.log(today)
 
             var eventRow = $("<tr>");
             var eventDateTD = $("<td>");
-            var eventTimeTD = $("<td>");
             var eventNameTD = $("<td>");
             var eventLocationTD = $("<td>");
             var eventLinkTD = $("<td>");
             $(eventDateTD).append(eventDate);
-            $(eventTimeTD).append(eventTime);
             $(eventNameTD).append(eventName);
             $(eventLocationTD).append(eventVenue);
             $(eventLinkTD).append(eventLink);
@@ -210,12 +208,10 @@ $.ajax({
 
         var eventRow = $("<tr>");
         var eventDateTD = $("<td>");
-        var eventTimeTD = $("<td>");
         var eventNameTD = $("<td>");
         var eventLocationTD = $("<td>");
         var eventLinkTD = $("<td>");
         $(eventDateTD).append(eventDate);
-        $(eventTimeTD).append(eventTime);
         $(eventNameTD).append(eventName);
         $(eventLocationTD).append(eventVenue);
         $(eventLinkTD).append(eventLink);
