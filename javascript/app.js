@@ -10,7 +10,10 @@
  var searchLON = ""
  var searchLAT = ""
  var searchTerm
-// Setting up the current date to check to make sure the startDate >= the current date
+
+ var mapDisplay = false
+
+ // Setting up the current date to check to make sure the startDate >= the current date
  var today = new Date();
  var dd = today.getDate();
  var mm = today.getMonth()+1;
@@ -26,6 +29,7 @@
 
 today = yyyy + '-' + mm + '-' + dd + "T00:00:00";
 console.log(today)
+
 // Here we get the values of the input forms and assign them to the city and state variables to be displayed.
  window.onload = function(){
      $('.parallax').parallax();
@@ -34,6 +38,7 @@ console.log(today)
      $("#contentHeader").hide();
      $("#mainContent").hide();
      $("#searchButton").click(function(){
+
         console.log($("#firstDate").val(), $("#secondDate").val())
         startDate = $("#firstDate").val() + "T00:00:00"
         endDate   = $("#secondDate").val() + "T00:00:00"
@@ -56,18 +61,21 @@ console.log(today)
 
         }
          $('.collapsibleDiv').show();
-         // Setting the city and state variables
-        city  = $("#searchBar").val()
-        state = $("#searchState").val()
+
+        // Setting the city and state variables
+        city  = $("#searchBar").val().trim();
+        state = $("#searchState").val().trim();
         // Making the cities first character uppercase and making state all uppercase.
         city = city.toLowerCase()
         city = city.charAt(0).toUpperCase() + city.slice(1)
+          
+        var arr = []
 
         city = city.replace("-", " - ")
 
         console.log(city)
+
         function capitalize(str) {
-            var arr = []
             var sep = str.split(" ")
             console.log(sep)
             for (i=0; i<sep.length; i++) {
@@ -269,7 +277,68 @@ $("#socialRow").on("click", function() {
             $("#socialEvents").append(eventTable);
         }
     })
+
    $(document).on("click", "#sportsEvents", fetchEvents);
+
+
+
+    // mapquest key j1jNtHV0DbGZt1TOQg8rFdnvuzK3BBNH
+
+    displayAuxBox();
+
+    // Displays the mapquest button inside of a div called auxBox
+    function displayAuxBox(){
+        // Creates div
+        var auxBox = $("<div id = aux-box>");
+
+        // Prepares state and city for url link if there are no spaces in city
+        var lowerState = state.toLowerCase();
+        hyphenCity = city;
+        delimiterCity = city;
+        // If there are spaces in city, calls delimitCity to replace them with "-" or "%20"
+        var patt = /\s/;
+        if (patt.test(city) == true) {
+
+            hyphenCity = delimitCity("-").toLowerCase();
+            delimiterCity = delimitCity("%20");
+
+        }
+        // mapquest url
+        mapUrl = "https://www.mapquest.com/search/results?slug=%2Fus%2F"+lowerState+"%2F"+hyphenCity+"&query="+delimiterCity+",%20"+state+"&page=0";
+        // If this is the first search, a new button is created and appended to auxBox, which is appended to mainContent
+        if (mapDisplay == false){
+
+            var mapButton = $("<a href='"+mapUrl+"' id=map-button class=aux-stuff target='_blank'><button type=submit>mapquest</button></a>");
+
+            auxBox.html(mapButton);
+
+            $("#mainContent").append(auxBox);
+
+            mapDisplay = true;
+
+        }
+        else {
+            // Else the original button is updated with a new url
+            $("#map-button").attr("href", mapUrl);
+        }
+    }
+
+    // If the city has spaces, replaces them with the "-" or "%20" delimeter for the mapquest url link
+    function delimitCity(del){
+        var tempCity = "";
+        for (var i = 0; i < arr.length-1; i++) {
+            tempCity = tempCity.concat(arr[i].concat(del));
+        }
+        tempCity = tempCity.concat(arr[arr.length-1]);
+        return tempCity
+    }
+
+
+    
+
+})
+    // Sets up a click handler for selecting the sports tab
+   $(document).on("click", "#sportsRow", fetchEvents);
    // Sets up a click handler for selecting the theatre tab
    $(document).on("click", "#theatreEvents", fetchEvents);
 
@@ -280,11 +349,16 @@ $("#socialRow").on("click", function() {
 
         console.log("event = " + event);
 
+        
+        console.log("event = " + eventType);
+
         // Gets the input data from the DOM
 
         console.log("cityName = " + cityName);
         // Sets up the query url based on the input data and event type
         var queryURL = "https://app.ticketmaster.com/discovery/v2/events.json?city=" + cityName + "&stateCode=" + stateName + "&startDateTime=" + startDate +"T00%3A00%3A00Z&endDateTime=" + endDate + "T23%3A59%3A00Z&keyword=" + event + "&sort=date,asc&apikey=FJe0EUZsiu36JGLaKJ0OTRG6MUalTIbh";
+        var queryURL = "https://app.ticketmaster.com/discovery/v2/events.json?city=" + city + "&stateCode=" + state + "&startDateTime=" + startDate +"T00%3A00%3A00Z&endDateTime=" + endDate + "T23%3A59%3A00Z&keyword=" + eventType + "&sort=date,asc&apikey=FJe0EUZsiu36JGLaKJ0OTRG6MUalTIbh";
+
         //Makes the API call
         $.ajax({
             url: queryURL,
@@ -330,7 +404,7 @@ $("#socialRow").on("click", function() {
             eventtr.append(eventName);
             eventtr.append(eventLocation);
             eventtr.append(eventLink);            
-            // Based on weather the sports tab or theatre tab was selected, appends new row to table
+            // Based on whether the sports tab or theatre tab was selected, appends new row to table
             if (event == "Sports"){
                 $("#sportsTable").append(eventtr);
             }
@@ -340,7 +414,6 @@ $("#socialRow").on("click", function() {
         }
 
     };
-    });
-}
+    };
 })
 }
