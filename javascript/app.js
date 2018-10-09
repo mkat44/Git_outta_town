@@ -236,7 +236,7 @@ $.ajax({
 // doesn't currently return anything but a console log; working on pulling out relevant info now
 
 
-$("#fillerIdSocial").on("click", function() {
+$("#socialRow").on("click", function() {
     $("#socialEvents").empty();
     var queryMeetup = "https://api.meetup.com/find/upcoming_events/?key=50714b3e1a91d102f757e2e3b466057&start_date_range=" + startDate + "&end_date_range=" + endDate + "&lat=" + searchLAT + "&lon=" + searchLON;
 
