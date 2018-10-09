@@ -164,13 +164,11 @@ console.log(today)
             var eventRow = $("<tr>");
             var eventDateTD = $("<td>");
             var eventNameTD = $("<td>");
-            var eventLocationTD = $("<td>");
             var eventLinkTD = $("<td>");
             $(eventDateTD).append(eventDate);
             $(eventNameTD).append(eventName);
-            $(eventLocationTD).append(eventVenue);
             $(eventLinkTD).append(eventLink);
-            $(eventRow).append(eventDateTD, eventNameTD, eventLocationTD, eventLinkTD);
+            $(eventRow).append(eventDateTD, eventNameTD, eventLinkTD);
             $("#musicEvents").append(eventRow);
         }
     })
@@ -209,13 +207,11 @@ $.ajax({
         var eventRow = $("<tr>");
         var eventDateTD = $("<td>");
         var eventNameTD = $("<td>");
-        var eventLocationTD = $("<td>");
         var eventLinkTD = $("<td>");
         $(eventDateTD).append(eventDate);
         $(eventNameTD).append(eventName);
-        $(eventLocationTD).append(eventVenue);
         $(eventLinkTD).append(eventLink);
-        $(eventRow).append(eventDateTD, eventNameTD, eventLocationTD, eventLinkTD);
+        $(eventRow).append(eventDateTD, eventNameTD, eventLinkTD);
         $("#foodDrinkEvents").append(eventRow);
     }
 })
