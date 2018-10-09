@@ -4,13 +4,32 @@
  // by the user, we have link, which is the base link for all wiki articles.
  var city  = "";
  var link  = "https://en.wikipedia.org/wiki/"
- var state = "";
- var startDate = "";
- var endDate = "";
- var searchLON = "";
- var searchLAT = "";
- var searchTerm = "";
- 
+ var state = ""
+ var startDate = ""
+ var endDate = ""
+ var searchLON = ""
+ var searchLAT = ""
+ var searchTerm
+
+ var mapDisplay = false
+
+ // Setting up the current date to check to make sure the startDate >= the current date
+ var today = new Date();
+ var dd = today.getDate();
+ var mm = today.getMonth()+1;
+ var yyyy = today.getFullYear();
+
+ if(dd<10) {
+    dd = '0'+dd
+ } 
+
+ if(mm<10) {
+    mm = '0'+mm
+ } 
+
+today = yyyy + '-' + mm + '-' + dd + "T00:00:00";
+console.log(today)
+
 // Here we get the values of the input forms and assign them to the city and state variables to be displayed.
  window.onload = function(){
      $('.parallax').parallax();
@@ -19,6 +38,17 @@
      $("#contentHeader").hide();
      $("#mainContent").hide();
      $("#searchButton").click(function(){
+
+        console.log($("#firstDate").val(), $("#secondDate").val())
+        startDate = $("#firstDate").val() + "T00:00:00"
+        endDate   = $("#secondDate").val() + "T00:00:00"
+        console.log(startDate)
+        console.log(endDate)
+        if (startDate > endDate || startDate < today) {
+            // Put the user text here saying invalid date
+            console.error("ERROR:  Invalid date entered!")
+        }
+        else {
         $("#contentHeader").show();
         $("#mainContent").show();
         $("#buttonDiv").text("");
@@ -31,27 +61,35 @@
 
         }
          $('.collapsibleDiv').show();
-         // Setting the city and state variables
-        city  = $("#searchBar").val()
-        state = $("#searchState").val()
+
+        // Setting the city and state variables
+        city  = $("#searchBar").val().trim();
+        state = $("#searchState").val().trim();
         // Making the cities first character uppercase and making state all uppercase.
         city = city.toLowerCase()
         city = city.charAt(0).toUpperCase() + city.slice(1)
+          
+        var arr = []
+
+        city = city.replace("-", " - ")
+
+        console.log(city)
+
         function capitalize(str) {
-            var arr = []
             var sep = str.split(" ")
+            console.log(sep)
             for (i=0; i<sep.length; i++) {
                 arr.push(sep[i][0].toUpperCase()+sep[i].slice(1))
+                console.log(arr)
             }
             return arr.join(" ")
         }
         city = capitalize(city)
         state = state.toUpperCase()
-        
 
         var fullLink = link + city + ", " + state
         console.log(fullLink)
-
+        city = city.replace(" - ", "-")
     
 
 
@@ -65,40 +103,22 @@
         
           var fullLink = link + city + ", " + state
          console.log(fullLink)
-
+         // Assigning the start and end date to use in the other API's for events
+        
+        
         $('<div>', {
             id: 'wikiLinkHolder'
         }).append( $('<div>', {
             id: 'wikiLink'
         })).append("<a class='waves-effect waves-light btn light-green' href = '" + fullLink + "'>"+ "Wikipedia").appendTo("#buttonDiv");
 
-        // Assigning the start and end date to use in the other API's for events
-        console.log($("#firstDate").val(), $("#secondDate").val())
-        startDate = $("#firstDate").val() + "T00:00:00"
-        endDate   = $("#secondDate").val() + "T00:00:00"
-        console.log(startDate)
-        console.log(endDate)
-        
-        
 
         $("#cityName").text(city + ", " + state);
 
 
     searchTerm = city + "+" + state
-    // mapquest geolocation api
-    // takes city,state and gives us lat/lon for other apis
-    // This code will be called as soon as the Search button is clicked in order to assign those variables.
-
- 
 
 
-    // meetup
-    // Need new on click function here
-    // needs dates formatted as YYYY-MM-DD+T+HH:MM:SS
-    // needs cities as LON (longitude) & LAT (latitude)
-    // doesn't currently return anything but a console log; working on pulling out relevant info now
-    // This code won't be called until it is told to.  So uppon the click of a button
-        
     // eventbrite
     // Need new on click function here.
     // needs dates formatted as YYYY-MM-DD+T+HH:MM:SS
@@ -111,7 +131,6 @@
     $("#musicEvents").empty();
     var queryEB = "https://www.eventbriteapi.com/v3/events/search/?q=" + searchKeyword + "&location.address=" + searchTerm + "&start_date.range_start=" + startDate + "&start_date.range_end=" + endDate + "&token=JYNTN4DWJF75I4XR2WTL";
 
-if (startDate < endDate)
     $.ajax({
         url: queryEB,
         method: "GET"
@@ -150,9 +169,7 @@ if (startDate < endDate)
             $("#musicEvents").append(eventTable);
         }
     })
-else {
-    console.log("ERROR: Start date is further than end date")
-}
+
 })
 
 $("#foodDrinkRow").on("click", function() {
@@ -162,7 +179,6 @@ console.log(searchKeyword)
 $("#foodDrinkEvents").empty();
 var queryEB = "https://www.eventbriteapi.com/v3/events/search/?q=" + searchKeyword + "&location.address=" + searchTerm + "&start_date.range_start=" + startDate + "&start_date.range_end=" + endDate + "&token=JYNTN4DWJF75I4XR2WTL";
 
-if (startDate < endDate)
 $.ajax({
     url: queryEB,
     method: "GET"
@@ -201,9 +217,7 @@ $.ajax({
         $("#foodDrinkEvents").append(eventTable);
     }
 })
-else {
-console.log("ERROR: Start date is further than end date")
-}
+
 })
 
 // mapquest geolocation api
@@ -230,11 +244,11 @@ console.log("ERROR: Start date is further than end date")
 // doesn't currently return anything but a console log; working on pulling out relevant info now
 
 
-$("#fillerIdSocial").on("click", function() {
+$("#socialRow").on("click", function() {
     $("#socialEvents").empty();
     var queryMeetup = "https://api.meetup.com/find/upcoming_events/?key=50714b3e1a91d102f757e2e3b466057&start_date_range=" + startDate + "&end_date_range=" + endDate + "&lat=" + searchLAT + "&lon=" + searchLON;
 
-if (startDate < endDate) {
+if (startDate < endDate && startDate >= today) {
     $.ajax({
         url: queryMeetup,
         method: "GET"
@@ -244,7 +258,8 @@ if (startDate < endDate) {
             var eventName = response.events[i].name;
             var eventDate = moment(response.events[i].local_date).format("MM/DD/YYYY");
             var eventTime = moment(response.events[i].local_time, "HH:mm:ss").format("hh:mm a");
-            var eventLink = "<a href='" + response.events[i].link + "' + target='_blank'><button>More Info</button></a>";
+            var eventLocation = response.events[i].venue.address_1;
+            var eventLink = "<a class='waves-effect waves-light btn light-green' style='float:right;'href='" + response.events[i].link + "' + target='_blank'>" + 'Link' + "</a>";
 
             var event = $("<tr>");
             var eventDateTD = $("<td>");
@@ -263,25 +278,85 @@ if (startDate < endDate) {
     })
 }
 else {
-    console.log("ERROR:  Start date is further than end date!")
+    console.error("ERROR: Invalid date!")
 }
-})
-   $(document).on("click", "#sportsEvents", fetchEvents);
-   // Sets up a click handler for selecting the theatre tab
-   $(document).on("click", "#theatreEvents", fetchEvents);
 
+    // mapquest key j1jNtHV0DbGZt1TOQg8rFdnvuzK3BBNH
+
+    displayAuxBox();
+
+    // Displays the mapquest button inside of a div called auxBox
+    function displayAuxBox(){
+        // Creates div
+        var auxBox = $("<div id = aux-box>");
+
+        // Prepares state and city for url link if there are no spaces in city
+        var lowerState = state.toLowerCase();
+        hyphenCity = city;
+        delimiterCity = city;
+        // If there are spaces in city, calls delimitCity to replace them with "-" or "%20"
+        var patt = /\s/;
+        if (patt.test(city) == true) {
+
+            hyphenCity = delimitCity("-").toLowerCase();
+            delimiterCity = delimitCity("%20");
+
+        }
+        // mapquest url
+        mapUrl = "https://www.mapquest.com/search/results?slug=%2Fus%2F"+lowerState+"%2F"+hyphenCity+"&query="+delimiterCity+",%20"+state+"&page=0";
+        // If this is the first search, a new button is created and appended to auxBox, which is appended to mainContent
+        if (mapDisplay == false){
+
+            var mapButton = $("<a href='"+mapUrl+"' id=map-button class=aux-stuff target='_blank'><button type=submit>mapquest</button></a>");
+
+            auxBox.html(mapButton);
+
+            $("#mainContent").append(auxBox);
+
+            mapDisplay = true;
+
+        }
+        else {
+            // Else the original button is updated with a new url
+            $("#map-button").attr("href", mapUrl);
+        }
+    }
+
+    // If the city has spaces, replaces them with the "-" or "%20" delimeter for the mapquest url link
+    function delimitCity(del){
+        var tempCity = "";
+        for (var i = 0; i < arr.length-1; i++) {
+            tempCity = tempCity.concat(arr[i].concat(del));
+        }
+        tempCity = tempCity.concat(arr[arr.length-1]);
+        return tempCity
+    }
+
+
+    
+
+})
+    // Sets up a click handler for selecting the sports tab
+   $(document).on("click", "#sportsRow", fetchEvents);
+   // Sets up a click handler for selecting the theatre tab
+   $(document).on("click", "#theaterRow", fetchEvents);
+
+   $("#sportsRow").attr("event", "sports");
+   $("#theaterRow").attr("event", "theatre");
     // Fetches the data from ticketmaster
     function fetchEvents(){
         // Retrieves the event type, either sports or theatre
-        var event = $(this).attr("value");
+        var eventType = $(this).attr("value");
 
-        console.log("event = " + event);
+        
+        console.log("event = " + eventType);
 
         // Gets the input data from the DOM
 
-        console.log("cityName = " + cityName);
+        console.log("cityName = " + city);
         // Sets up the query url based on the input data and event type
-        var queryURL = "https://app.ticketmaster.com/discovery/v2/events.json?city=" + cityName + "&stateCode=" + stateName + "&startDateTime=" + startDate +"T00%3A00%3A00Z&endDateTime=" + endDate + "T23%3A59%3A00Z&keyword=" + event + "&sort=date,asc&apikey=FJe0EUZsiu36JGLaKJ0OTRG6MUalTIbh";
+        var queryURL = "https://app.ticketmaster.com/discovery/v2/events.json?city=" + city + "&stateCode=" + state + "&startDateTime=" + startDate +"T00%3A00%3A00Z&endDateTime=" + endDate + "T23%3A59%3A00Z&keyword=" + eventType + "&sort=date,asc&apikey=FJe0EUZsiu36JGLaKJ0OTRG6MUalTIbh";
+
         //Makes the API call
         $.ajax({
             url: queryURL,
@@ -291,7 +366,7 @@ else {
 
             var results = response._embedded;
             // Calls the function to display the API results
-            displayEvents(results,event);
+            displayEvents(results,eventType);
 
             console.log(results);
             
@@ -327,17 +402,17 @@ else {
             eventtr.append(eventName);
             eventtr.append(eventLocation);
             eventtr.append(eventLink);            
-            // Based on weather the sports tab or theatre tab was selected, appends new row to table
+            // Based on whether the sports tab or theatre tab was selected, appends new row to table
             if (event == "Sports"){
                 $("#sportsTable").append(eventtr);
             }
             else if (event == "Theatre"){
-                $("#theatreTable").append(eventtr);
+                $("#theaterTable").append(eventtr);
             }
         }
 
     };
     });
-
- }
-
+}
+})
+}
