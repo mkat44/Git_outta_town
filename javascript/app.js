@@ -4,13 +4,28 @@
  // by the user, we have link, which is the base link for all wiki articles.
  var city  = "";
  var link  = "https://en.wikipedia.org/wiki/"
- var state = "";
- var startDate = "";
- var endDate = "";
- var searchLON = "";
- var searchLAT = "";
- var searchTerm = "";
- 
+ var state = ""
+ var startDate = ""
+ var endDate = ""
+ var searchLON = ""
+ var searchLAT = ""
+ var searchTerm
+// Setting up the current date to check to make sure the startDate >= the current date
+ var today = new Date();
+ var dd = today.getDate();
+ var mm = today.getMonth()+1;
+ var yyyy = today.getFullYear();
+
+ if(dd<10) {
+    dd = '0'+dd
+ } 
+
+ if(mm<10) {
+    mm = '0'+mm
+ } 
+
+today = yyyy + '-' + mm + '-' + dd + "T00:00:00";
+console.log(today)
 // Here we get the values of the input forms and assign them to the city and state variables to be displayed.
  window.onload = function(){
      $('.parallax').parallax();
@@ -19,6 +34,16 @@
      $("#contentHeader").hide();
      $("#mainContent").hide();
      $("#searchButton").click(function(){
+        console.log($("#firstDate").val(), $("#secondDate").val())
+        startDate = $("#firstDate").val() + "T00:00:00"
+        endDate   = $("#secondDate").val() + "T00:00:00"
+        console.log(startDate)
+        console.log(endDate)
+        if (startDate > endDate || startDate < today) {
+            // Put the user text here saying invalid date
+            console.error("ERROR:  Invalid date entered!")
+        }
+        else {
         $("#contentHeader").show();
         $("#mainContent").show();
         $("#buttonDiv").text("");
@@ -37,21 +62,26 @@
         // Making the cities first character uppercase and making state all uppercase.
         city = city.toLowerCase()
         city = city.charAt(0).toUpperCase() + city.slice(1)
+
+        city = city.replace("-", " - ")
+
+        console.log(city)
         function capitalize(str) {
             var arr = []
             var sep = str.split(" ")
+            console.log(sep)
             for (i=0; i<sep.length; i++) {
                 arr.push(sep[i][0].toUpperCase()+sep[i].slice(1))
+                console.log(arr)
             }
             return arr.join(" ")
         }
         city = capitalize(city)
         state = state.toUpperCase()
-        
 
         var fullLink = link + city + ", " + state
         console.log(fullLink)
-
+        city = city.replace(" - ", "-")
     
 
 
@@ -65,40 +95,22 @@
         
           var fullLink = link + city + ", " + state
          console.log(fullLink)
-
+         // Assigning the start and end date to use in the other API's for events
+        
+        
         $('<div>', {
             id: 'wikiLinkHolder'
         }).append( $('<div>', {
             id: 'wikiLink'
         })).append("<a class='waves-effect waves-light btn light-green' href = '" + fullLink + "'>"+ "Wikipedia").appendTo("#buttonDiv");
 
-        // Assigning the start and end date to use in the other API's for events
-        console.log($("#firstDate").val(), $("#secondDate").val())
-        startDate = $("#firstDate").val() + "T00:00:00"
-        endDate   = $("#secondDate").val() + "T00:00:00"
-        console.log(startDate)
-        console.log(endDate)
-        
-        
 
         $("#cityName").text(city + ", " + state);
 
 
     searchTerm = city + "+" + state
-    // mapquest geolocation api
-    // takes city,state and gives us lat/lon for other apis
-    // This code will be called as soon as the Search button is clicked in order to assign those variables.
-
- 
 
 
-    // meetup
-    // Need new on click function here
-    // needs dates formatted as YYYY-MM-DD+T+HH:MM:SS
-    // needs cities as LON (longitude) & LAT (latitude)
-    // doesn't currently return anything but a console log; working on pulling out relevant info now
-    // This code won't be called until it is told to.  So uppon the click of a button
-        
     // eventbrite
     // Need new on click function here.
     // needs dates formatted as YYYY-MM-DD+T+HH:MM:SS
@@ -111,7 +123,6 @@
     $("#musicEvents").empty();
     var queryEB = "https://www.eventbriteapi.com/v3/events/search/?q=" + searchKeyword + "&location.address=" + searchTerm + "&start_date.range_start=" + startDate + "&start_date.range_end=" + endDate + "&token=JYNTN4DWJF75I4XR2WTL";
 
-if (startDate < endDate)
     $.ajax({
         url: queryEB,
         method: "GET"
@@ -150,9 +161,7 @@ if (startDate < endDate)
             $("#musicEvents").append(eventTable);
         }
     })
-else {
-    console.log("ERROR: Start date is further than end date")
-}
+
 })
 
 $("#foodDrinkRow").on("click", function() {
@@ -162,7 +171,6 @@ console.log(searchKeyword)
 $("#foodDrinkEvents").empty();
 var queryEB = "https://www.eventbriteapi.com/v3/events/search/?q=" + searchKeyword + "&location.address=" + searchTerm + "&start_date.range_start=" + startDate + "&start_date.range_end=" + endDate + "&token=JYNTN4DWJF75I4XR2WTL";
 
-if (startDate < endDate)
 $.ajax({
     url: queryEB,
     method: "GET"
@@ -201,9 +209,7 @@ $.ajax({
         $("#foodDrinkEvents").append(eventTable);
     }
 })
-else {
-console.log("ERROR: Start date is further than end date")
-}
+
 })
 
 // mapquest geolocation api
@@ -234,7 +240,7 @@ $("#socialRow").on("click", function() {
     $("#socialEvents").empty();
     var queryMeetup = "https://api.meetup.com/find/upcoming_events/?key=50714b3e1a91d102f757e2e3b466057&start_date_range=" + startDate + "&end_date_range=" + endDate + "&lat=" + searchLAT + "&lon=" + searchLON;
 
-if (startDate < endDate) {
+if (startDate < endDate && startDate >= today) {
     $.ajax({
         url: queryMeetup,
         method: "GET"
@@ -266,7 +272,7 @@ if (startDate < endDate) {
     })
 }
 else {
-    console.log("ERROR:  Start date is further than end date!")
+    console.error("ERROR: Invalid date!")
 }
 })
    $(document).on("click", "#sportsRow", fetchEvents);
@@ -343,5 +349,6 @@ else {
 
     };
     });
-
- }
+}
+})
+}
