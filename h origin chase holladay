@@ -1,0 +1,623 @@
+[33mcommit 2fecd68d16b5e78d4d7bcd209d8ef70cbe1dfcc5[m[33m ([m[1;36mHEAD -> [m[1;32mchaseholladay[m[33m)[m
+Merge: c9cda41 a6a5abb
+Author: Chase Holladay <chaseholladay@gmail.com>
+Date:   Mon Oct 8 14:30:31 2018 -0500
+
+    trying to add multiple parameters weather
+
+[33mcommit a6a5abb9b4171beb9fff46d7a042f6e05be30714[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Merge: 78257a8 37086ea
+Author: Eric Hickstein <38333223+ehickstein@users.noreply.github.com>
+Date:   Mon Oct 8 13:39:08 2018 -0500
+
+    Merge pull request #28 from ehickstein/Mary
+    
+    Hardcoded in the event data for music and food & drink content.
+
+[33mcommit 37086eae8a1363aa69733856b88c91a1c1c7b7de[m
+Merge: a727fd8 78257a8
+Author: Eric Hickstein <38333223+ehickstein@users.noreply.github.com>
+Date:   Mon Oct 8 13:39:01 2018 -0500
+
+    Merge branch 'master' into Mary
+
+[33mcommit a727fd8470e163b12892d3f45fe29b020f314279[m
+Author: Mary Carr <m.kat44@gmail.com>
+Date:   Mon Oct 8 13:35:29 2018 -0500
+
+    Hardcoded in the event data for music and food & drink content.
+
+[33mcommit 78257a8c91a64c841f920e67057774f90a1bec89[m
+Merge: be7c10c cc55964
+Author: Eric Hickstein <38333223+ehickstein@users.noreply.github.com>
+Date:   Mon Oct 8 13:35:02 2018 -0500
+
+    Merge pull request #27 from ehickstein/eric
+    
+    fixed formatting issues in html
+
+[33mcommit cc559640df7699bd2a14f58e3ac73205cb2fff1b[m
+Author: ehickstein <38333223+ehickstein@users.noreply.github.com>
+Date:   Mon Oct 8 13:34:23 2018 -0500
+
+    fixed formatting issues in html
+
+[33mcommit c9cda413595b47992a3dc8222ff2340df94aa1b9[m
+Author: Chase Holladay <chaseholladay@gmail.com>
+Date:   Mon Oct 8 13:32:01 2018 -0500
+
+    working on adding parameters
+
+[33mcommit be7c10c89203bd3a6b17a4d5ac94925ec6f3ee8d[m
+Merge: 2993476 1eef269
+Author: Eric Hickstein <38333223+ehickstein@users.noreply.github.com>
+Date:   Mon Oct 8 13:30:08 2018 -0500
+
+    Merge pull request #26 from ehickstein/eric
+    
+    Eric
+
+[33mcommit 1eef269c006a20af2d75c636b38d9027792e928e[m
+Merge: 3c80dea 2993476
+Author: ehickstein <38333223+ehickstein@users.noreply.github.com>
+Date:   Mon Oct 8 13:25:19 2018 -0500
+
+    resolved merge conflicts
+
+[33mcommit 3c80dea5c748f5e68b615040b6771fab8cb1acf8[m
+Author: ehickstein <38333223+ehickstein@users.noreply.github.com>
+Date:   Mon Oct 8 13:23:21 2018 -0500
+
+    added HTML ids and classes, refined the theme and look of the site
+
+[33mcommit 29934767e4bf3f1fa8f3ef7ae86e7a5d87402dcc[m
+Merge: 54c044d 29536b7
+Author: ReeceShadden <42821285+ReeceShadden@users.noreply.github.com>
+Date:   Mon Oct 8 13:01:20 2018 -0500
+
+    Merge pull request #25 from ehickstein/Mary
+    
+    Social collapsible works; committing to get more eyes on the rest.
+
+[33mcommit 29536b760ec4049bc785bf76ddab312cad7f94da[m
+Merge: b359be7 54c044d
+Author: Mary Carr <43014784+mkat44@users.noreply.github.com>
+Date:   Mon Oct 8 12:57:28 2018 -0500
+
+    Merge branch 'master' into Mary
+
+[33mcommit b359be7b61c87fab3ec6552cf2c78dfcf4075984[m
+Author: Mary Carr <m.kat44@gmail.com>
+Date:   Mon Oct 8 12:54:52 2018 -0500
+
+    Social collapsible works; commiting to get more eyes on the rest.
+
+[33mcommit 54c044d75f6a21bd516ccb134104e72ba9d6356e[m
+Merge: eaa193f 4811529
+Author: Eric Hickstein <38333223+ehickstein@users.noreply.github.com>
+Date:   Mon Oct 8 11:32:40 2018 -0500
+
+    Merge pull request #24 from ehickstein/eric
+    
+    Refined the HTML and CSS
+
+[33mcommit 481152984cc2a1cb6b8977ec6b747d6d0fa92fdf[m
+Merge: 3c5865c eaa193f
+Author: Eric Hickstein <38333223+ehickstein@users.noreply.github.com>
+Date:   Mon Oct 8 11:32:26 2018 -0500
+
+    Merge branch 'master' into eric
+
+[33mcommit 3c5865cb82ec4bf2ea50cff503b8cb06a2c7b615[m
+Author: ehickstein <38333223+ehickstein@users.noreply.github.com>
+Date:   Mon Oct 8 11:31:44 2018 -0500
+
+    refined the html and css
+
+[33mcommit eaa193f2a21efaa1839d2a05c65ed3b4875a9b69[m
+Merge: b5f853f 063e36b
+Author: ReeceShadden <42821285+ReeceShadden@users.noreply.github.com>
+Date:   Mon Oct 8 10:58:28 2018 -0500
+
+    Merge pull request #22 from ehickstein/Mary
+    
+    Tiny change to collapsible area on the HTML.
+
+[33mcommit 063e36be601fb87dadd443151c7358d978f51990[m
+Author: Mary Carr <m.kat44@gmail.com>
+Date:   Mon Oct 8 10:56:06 2018 -0500
+
+    Some more code cleaning.
+
+[33mcommit 06924d4db99e1178deccd30947269161686c5fdc[m
+Merge: 2d4f54e b5f853f
+Author: Mary Carr <m.kat44@gmail.com>
+Date:   Mon Oct 8 10:43:45 2018 -0500
+
+    Merge branch 'master' of github.com:ehickstein/Git_outta_town into Mary
+
+[33mcommit b5f853fd2d46c90c240067bed00aec2e78f12631[m
+Merge: 8c080a4 8349706
+Author: Mary Carr <43014784+mkat44@users.noreply.github.com>
+Date:   Mon Oct 8 10:43:22 2018 -0500
+
+    Merge pull request #23 from ehickstein/DJSHADDY
+    
+    Some code cleaning
+
+[33mcommit 834970630fa86f09116192221b2e58b73676b7ce[m
+Author: Shaddy Cat <rjshadden@gmail.com>
+Date:   Mon Oct 8 10:41:59 2018 -0500
+
+    Some code cleaning
+
+[33mcommit 2d4f54e1981a6b8bf5a17a739db73d28c1ae7640[m
+Author: Mary Carr <m.kat44@gmail.com>
+Date:   Mon Oct 8 10:37:58 2018 -0500
+
+    Tiny change to collapsible area on the HTML.
+
+[33mcommit 047d2952fe28ac36e6f4221bf4493d02c9b33f20[m
+Merge: 78ed6d9 8c080a4
+Author: ehickstein <38333223+ehickstein@users.noreply.github.com>
+Date:   Mon Oct 8 10:15:36 2018 -0500
+
+    resolved git conflicts
+
+[33mcommit 78ed6d974d889470ec6d5a388942985aed93d2e5[m
+Author: ehickstein <38333223+ehickstein@users.noreply.github.com>
+Date:   Mon Oct 8 10:14:18 2018 -0500
+
+    refined html and css
+
+[33mcommit 8c080a4c6ae8a9170e4df9205a62218c3e31dd5c[m
+Merge: 6e636a3 cab5e36
+Author: Eric Hickstein <38333223+ehickstein@users.noreply.github.com>
+Date:   Mon Oct 8 10:13:14 2018 -0500
+
+    Merge pull request #21 from ehickstein/DJSHADDY
+    
+    Djshaddy
+
+[33mcommit cab5e36353c25e821b091e6f27ef9b21868c29b0[m
+Merge: 5a58f6c 6e636a3
+Author: Eric Hickstein <38333223+ehickstein@users.noreply.github.com>
+Date:   Mon Oct 8 10:13:07 2018 -0500
+
+    Merge branch 'master' into DJSHADDY
+
+[33mcommit 6e636a37b24823b286cf49ecba423ad9e840f8ba[m
+Merge: 01a3c00 e1b6e0e
+Author: Eric Hickstein <38333223+ehickstein@users.noreply.github.com>
+Date:   Mon Oct 8 10:07:35 2018 -0500
+
+    Merge pull request #20 from ehickstein/Andre
+    
+    Andre
+
+[33mcommit 5a58f6c82f97276df07daa69e1cff18e93c77d02[m
+Author: Shaddy Cat <rjshadden@gmail.com>
+Date:   Mon Oct 8 10:07:29 2018 -0500
+
+    Added user verification.  If start date is greater than end date, it will give an error in the console.
+
+[33mcommit e1b6e0e4690104f1a78fd0938c52f83afc3c2328[m
+Merge: 5cb760c 01a3c00
+Author: Eric Hickstein <38333223+ehickstein@users.noreply.github.com>
+Date:   Mon Oct 8 10:07:24 2018 -0500
+
+    Merge branch 'master' into Andre
+
+[33mcommit 01a3c0023e0e2d6f10c7924270a0b521bb398d57[m
+Merge: ea8aea7 0bcf011
+Author: Eric Hickstein <38333223+ehickstein@users.noreply.github.com>
+Date:   Mon Oct 8 10:02:49 2018 -0500
+
+    Merge pull request #18 from ehickstein/Mary
+    
+    More work with the Eventbrite & Meetup APIs
+
+[33mcommit 0bcf011376b31432633e23a8855a8f492467135f[m
+Merge: 6568158 ea8aea7
+Author: Eric Hickstein <38333223+ehickstein@users.noreply.github.com>
+Date:   Mon Oct 8 10:02:39 2018 -0500
+
+    Merge branch 'master' into Mary
+
+[33mcommit ea8aea7cfeb72ce90854b1a95f4305a08afc5ac0[m
+Merge: 723581b e5c301a
+Author: Eric Hickstein <38333223+ehickstein@users.noreply.github.com>
+Date:   Mon Oct 8 09:59:22 2018 -0500
+
+    Merge pull request #19 from ehickstein/eric
+    
+    Merge pull request #17 from ehickstein/master
+
+[33mcommit 6fa1a4e7e5afc0aa22f5cc78739eff3ca2430c06[m
+Merge: 2990be9 723581b
+Author: ehickstein <38333223+ehickstein@users.noreply.github.com>
+Date:   Mon Oct 8 09:58:15 2018 -0500
+
+    more changes
+
+[33mcommit 5cb760c6991634909e232694b47fc8a45620ad07[m
+Author: Andre <amcaron1@msn.com>
+Date:   Mon Oct 8 09:57:14 2018 -0500
+
+    Sports and theatre api call
+
+[33mcommit 656815820ba2c85f34fa6b19a8f2bf145d67e8cb[m
+Author: Mary Carr <m.kat44@gmail.com>
+Date:   Fri Oct 5 13:40:39 2018 -0500
+
+    More work with the Eventbrite & Meetup APIs
+
+[33mcommit 2990be901124aa558c2dcf4b2cdd7c2999fe718c[m
+Author: ehickstein <38333223+ehickstein@users.noreply.github.com>
+Date:   Fri Oct 5 13:40:30 2018 -0500
+
+    added more html id's and table headers and content
+
+[33mcommit e5c301a7d714db9a1b863868ed591e0295c750bb[m
+Merge: 3ee35a5 723581b
+Author: Eric Hickstein <38333223+ehickstein@users.noreply.github.com>
+Date:   Fri Oct 5 13:39:36 2018 -0500
+
+    Merge pull request #17 from ehickstein/master
+    
+    pulling changes to own branch
+
+[33mcommit 8e4186cc491f89a5e7155a9aef1a2cf8f1fe637a[m
+Merge: f0625ea 723581b
+Author: Shaddy Cat <rjshadden@gmail.com>
+Date:   Fri Oct 5 13:14:45 2018 -0500
+
+    Having some mergin issues, trying to fix
+
+[33mcommit f0625eaf544006ed1227c54053e034a7071a4b0e[m
+Merge: 23f35db 4d5d6f7
+Author: Shaddy Cat <rjshadden@gmail.com>
+Date:   Fri Oct 5 13:11:46 2018 -0500
+
+    Final preparations for onClick function
+
+[33mcommit 28ce95a834e847b8d1064206f883d69b3a619623[m[33m ([m[1;31morigin/chaseholladay[m[33m)[m
+Author: Chase Holladay <chaseholladay@gmail.com>
+Date:   Fri Oct 5 13:10:18 2018 -0500
+
+    temperature logic works
+
+[33mcommit 723581b16f1d77d4b2fbeb9541ad6d4addb78fd7[m
+Merge: 4d5d6f7 fa9a3f3
+Author: Eric Hickstein <38333223+ehickstein@users.noreply.github.com>
+Date:   Fri Oct 5 13:07:16 2018 -0500
+
+    Merge pull request #16 from ehickstein/DJSHADDY
+    
+    Made preparations for running the ajax functions for nearby events
+
+[33mcommit fa9a3f32ec9e3998455122dd50564a2d33a52c41[m
+Merge: 23f35db 4d5d6f7
+Author: Eric Hickstein <38333223+ehickstein@users.noreply.github.com>
+Date:   Fri Oct 5 13:07:09 2018 -0500
+
+    Merge branch 'master' into DJSHADDY
+
+[33mcommit 23f35dbec3cb4924d52db86433cf74a11fc89884[m
+Author: Shaddy Cat <rjshadden@gmail.com>
+Date:   Fri Oct 5 12:59:59 2018 -0500
+
+    Made preparations for running the ajax functions for nearby events
+
+[33mcommit 4d5d6f72fedc4e08bd3ffde74d45307e725b798f[m
+Merge: f1533d2 3ee35a5
+Author: Eric Hickstein <38333223+ehickstein@users.noreply.github.com>
+Date:   Fri Oct 5 12:43:57 2018 -0500
+
+    Merge pull request #15 from ehickstein/eric
+    
+    Eric
+
+[33mcommit 3ee35a54914633026b3956a3e1f9e8757b3d3064[m
+Merge: 5f7b0e2 f1533d2
+Author: ehickstein <38333223+ehickstein@users.noreply.github.com>
+Date:   Fri Oct 5 12:42:56 2018 -0500
+
+    making changes to collapsible
+
+[33mcommit 5f7b0e2cfa0bf848d6ec38cafa4fa06231861b24[m
+Author: ehickstein <38333223+ehickstein@users.noreply.github.com>
+Date:   Fri Oct 5 12:39:03 2018 -0500
+
+    added collapsible table and hide/show function
+
+[33mcommit 299eb3695e349e8a1843a30b6752b76a5f08eebd[m
+Author: Andre <amcaron1@msn.com>
+Date:   Fri Oct 5 11:28:03 2018 -0500
+
+    saving progress
+
+[33mcommit f1533d27cf2d521b1c50dac19e963181699edfd0[m
+Merge: 4004cef bd6a677
+Author: Eric Hickstein <38333223+ehickstein@users.noreply.github.com>
+Date:   Fri Oct 5 11:13:58 2018 -0500
+
+    Merge pull request #13 from ehickstein/DJSHADDY
+    
+    Djshaddy
+
+[33mcommit bd6a6772c34e1526c47b59cf76047f2e7f6319ae[m
+Merge: e1bd97c 4004cef
+Author: Eric Hickstein <38333223+ehickstein@users.noreply.github.com>
+Date:   Fri Oct 5 11:13:50 2018 -0500
+
+    Merge branch 'master' into DJSHADDY
+
+[33mcommit 4004cefe0d5f7b5c59690280ba20f81997aaa3c4[m
+Merge: 90ad88b 0661a30
+Author: Eric Hickstein <38333223+ehickstein@users.noreply.github.com>
+Date:   Fri Oct 5 11:11:49 2018 -0500
+
+    Merge pull request #14 from ehickstein/eric
+    
+    Added parallax to javascript
+
+[33mcommit 0661a30755a37c0b5e76cd6d5bab8ddd5cfbdfce[m
+Author: ehickstein <38333223+ehickstein@users.noreply.github.com>
+Date:   Fri Oct 5 11:11:16 2018 -0500
+
+    Added parallax to javascript
+
+[33mcommit e1bd97cffe0c37048419ef0d22ad6faedbfbf9b4[m
+Merge: 2ddad7e 26f8325
+Author: Shaddy Cat <rjshadden@gmail.com>
+Date:   Fri Oct 5 11:04:39 2018 -0500
+
+    Added JQUERY link to index.html and set up the start of some of the geocaching html implementation
+
+[33mcommit 90ad88b5386ca4b553d246973b232bca85f27b78[m
+Merge: 26f8325 e2f637e
+Author: Eric Hickstein <38333223+ehickstein@users.noreply.github.com>
+Date:   Fri Oct 5 10:55:17 2018 -0500
+
+    Merge pull request #12 from ehickstein/eric
+    
+    Eric
+
+[33mcommit e2f637e82c1804d7f5e5fd478877dace8c5af907[m
+Author: ehickstein <38333223+ehickstein@users.noreply.github.com>
+Date:   Fri Oct 5 10:54:00 2018 -0500
+
+    fixed app.js syntax
+
+[33mcommit 97e58eed7d7e81d9e7acb1b4ce029534566308a6[m
+Merge: b656f87 26f8325
+Author: ehickstein <38333223+ehickstein@users.noreply.github.com>
+Date:   Fri Oct 5 10:50:50 2018 -0500
+
+    fixed conflicts
+
+[33mcommit b656f87722c79e52a4528779d8d0c6fe310414b1[m
+Author: ehickstein <38333223+ehickstein@users.noreply.github.com>
+Date:   Fri Oct 5 10:46:12 2018 -0500
+
+    Updates to HTML and CSS
+
+[33mcommit 2ddad7e2cd21cb3000d5945f24ff15ab3b11772c[m
+Author: Shaddy Cat <rjshadden@gmail.com>
+Date:   Fri Oct 5 10:13:09 2018 -0500
+
+    Committing so I can pull
+
+[33mcommit 26f83254b8bd6e2ac102cf1ef120740df4c92243[m
+Merge: ad52b78 a5c6a3f
+Author: ReeceShadden <42821285+ReeceShadden@users.noreply.github.com>
+Date:   Fri Oct 5 10:08:38 2018 -0500
+
+    Merge pull request #11 from ehickstein/Mary
+    
+    Added some initial AJAX calls for Eventbrite, Meetup, and geocoding
+
+[33mcommit a5c6a3fe78aa1e876c44dd883f71f4462b3f931c[m
+Author: Mary Carr <m.kat44@gmail.com>
+Date:   Thu Oct 4 14:27:59 2018 -0500
+
+    Added some initial AJAX calls for Eventbrite, Meetup, and geocoding from Mapquest
+
+[33mcommit ad52b78bbbdd0cda415b7bd3c0033c1c7c17c55a[m
+Merge: 519246e 70fb63b
+Author: Eric Hickstein <38333223+ehickstein@users.noreply.github.com>
+Date:   Thu Oct 4 13:48:47 2018 -0500
+
+    Merge pull request #10 from ehickstein/DJSHADDY
+    
+    Djshaddy
+
+[33mcommit 70fb63bdf39bb90f6b33e9e3f36f130a1c99a28e[m
+Author: Shaddy Cat <rjshadden@gmail.com>
+Date:   Thu Oct 4 13:43:30 2018 -0500
+
+    Made it so you can either insert the state full name, or simply the abbreviation, and either way it will give you the proper wiki link
+
+[33mcommit d2268c7666cc79d604124acc5be9fd2600be5c52[m
+Merge: 4df1eb1 519246e
+Author: Shaddy Cat <rjshadden@gmail.com>
+Date:   Thu Oct 4 13:30:57 2018 -0500
+
+    Merge branch 'master' of github.com:ehickstein/Git_outta_town into DJSHADDY
+
+[33mcommit 4df1eb1005f7d31a073416365d9c6796e048618c[m
+Author: Shaddy Cat <rjshadden@gmail.com>
+Date:   Thu Oct 4 13:29:46 2018 -0500
+
+    Fixed some weird formatting issues and some bug fixing
+
+[33mcommit 519246ec62852f92d6f2cf3c415bb315d321148a[m
+Merge: 6bbdac6 c86c4ef
+Author: Eric Hickstein <38333223+ehickstein@users.noreply.github.com>
+Date:   Thu Oct 4 13:20:10 2018 -0500
+
+    Merge pull request #8 from ehickstein/DJSHADDY
+    
+    Djshaddy
+
+[33mcommit c86c4ef534ce67379ce51227496834c0a33b8a0e[m
+Merge: f7f1b0f 7c726fd
+Author: Shaddy Cat <rjshadden@gmail.com>
+Date:   Thu Oct 4 13:14:17 2018 -0500
+
+    Merge branch 'DJSHADDY' of github.com:ehickstein/Git_outta_town into DJSHADDY
+
+[33mcommit f7f1b0f3d552af02410412944ed7e5dcdb0a351f[m
+Author: Shaddy Cat <rjshadden@gmail.com>
+Date:   Thu Oct 4 13:11:35 2018 -0500
+
+    NOW it is fully idiot proofed!
+
+[33mcommit 6bbdac6c6ac8b62f2a06181675fcd25d9f8ed67e[m
+Merge: 2f24b3c 7c726fd
+Author: mkat44 <43014784+mkat44@users.noreply.github.com>
+Date:   Thu Oct 4 12:56:12 2018 -0500
+
+    Merge pull request #6 from ehickstein/DJSHADDY
+    
+    👍
+
+[33mcommit 7c726fd6d5e00118c9fcb857b5eca707eddc6101[m
+Merge: 2140cc0 2f24b3c
+Author: mkat44 <43014784+mkat44@users.noreply.github.com>
+Date:   Thu Oct 4 12:54:59 2018 -0500
+
+    Merge branch 'master' into DJSHADDY
+
+[33mcommit 2140cc008f395fe56339badda26d4ff8fc27578d[m
+Author: Shaddy Cat <rjshadden@gmail.com>
+Date:   Thu Oct 4 12:49:35 2018 -0500
+
+    Fully idiot proofed the wiki link generator
+
+[33mcommit 2f24b3c2ddf97d88edb5cb2243af64de8c1fb70d[m
+Merge: 9069737 3e07b03
+Author: mkat44 <43014784+mkat44@users.noreply.github.com>
+Date:   Thu Oct 4 12:17:38 2018 -0500
+
+    Merge pull request #4 from ehickstein/DJSHADDY
+    
+    Added comments to my code to help explain it further
+
+[33mcommit 83867cd95c8ab6bf7e5d5fe5efb83df3e0615454[m
+Author: Chase Holladay <chaseholladay@gmail.com>
+Date:   Thu Oct 4 12:11:12 2018 -0500
+
+    logic for weather data
+
+[33mcommit f19a26391d7a8f48b2df7c02561b81549500a630[m
+Merge: 3e07b03 9069737
+Author: Shaddy Cat <rjshadden@gmail.com>
+Date:   Thu Oct 4 11:46:14 2018 -0500
+
+    Merge branch 'master' of github.com:ehickstein/Git_outta_town into DJSHADDY
+
+[33mcommit 9069737abeff8e5596da6b2064d87666bb6f02b9[m
+Merge: 887f651 5c2c5f0
+Author: Eric Hickstein <38333223+ehickstein@users.noreply.github.com>
+Date:   Thu Oct 4 11:45:35 2018 -0500
+
+    Merge pull request #5 from ehickstein/eric
+    
+    Added search-bar and more site formatting
+
+[33mcommit 5c2c5f01e7ad3861dbcee1c752ecf32a0ff6b728[m
+Merge: 7ba3ac8 887f651
+Author: Eric Hickstein <38333223+ehickstein@users.noreply.github.com>
+Date:   Thu Oct 4 11:45:20 2018 -0500
+
+    Merge branch 'master' into eric
+
+[33mcommit 7ba3ac8ba0b2567e4542fafb9b9473594947c5ce[m
+Author: ehickstein <38333223+ehickstein@users.noreply.github.com>
+Date:   Thu Oct 4 11:42:23 2018 -0500
+
+    Added searchbar and more site formatting
+
+[33mcommit 3e07b03c801b8ff4f70c46711fae3464c4e41d0d[m
+Author: Shaddy Cat <rjshadden@gmail.com>
+Date:   Thu Oct 4 11:30:38 2018 -0500
+
+    Added comments to my code to help explain it further
+
+[33mcommit 887f651db734b38bf456c075f3f19675848346fa[m
+Merge: 99a02e6 c28d0c0
+Author: Eric Hickstein <38333223+ehickstein@users.noreply.github.com>
+Date:   Thu Oct 4 11:24:18 2018 -0500
+
+    Merge pull request #3 from ehickstein/DJSHADDY
+    
+    Djshaddy
+
+[33mcommit c28d0c06567e392ddd15a38ad36ebc2a47b2939b[m
+Author: Shaddy Cat <rjshadden@gmail.com>
+Date:   Thu Oct 4 11:20:50 2018 -0500
+
+    Removed testing HTML and removed empty javascript file
+
+[33mcommit 4820a4f51d9b952fb954d1647db2b2911bad9755[m
+Author: Shaddy Cat <rjshadden@gmail.com>
+Date:   Thu Oct 4 11:13:27 2018 -0500
+
+    Wikipedia link will display in the main content section.  I also added a form and submit button for testing purposes.  Can be removed for any reason.
+
+[33mcommit 8d29567c0bcc75cac96b5cacc71949a571daf970[m
+Merge: 300f109 99a02e6
+Author: Andre <amcaron1@msn.com>
+Date:   Thu Oct 4 10:40:27 2018 -0500
+
+    Merge branch 'master' of github.com:ehickstein/Git_outta_town into Andre
+
+[33mcommit 99a02e6fca4a901ac9eea42d0c9fc4534dc6d3a6[m
+Merge: fd7c620 aa592be
+Author: Eric Hickstein <38333223+ehickstein@users.noreply.github.com>
+Date:   Thu Oct 4 10:38:48 2018 -0500
+
+    Merge pull request #2 from ehickstein/eric
+    
+    Added reset.css content and wireframe in index.html
+
+[33mcommit aa592be0b57f0013821e8b2b1a45f007a858c795[m
+Author: ehickstein <38333223+ehickstein@users.noreply.github.com>
+Date:   Thu Oct 4 10:37:44 2018 -0500
+
+    Added reset.css content and wireframe in index.html
+
+[33mcommit fd7c6203271eee5888a8a06400eb346262bc5718[m
+Merge: ad89e4c 46c2c3a
+Author: Eric Hickstein <38333223+ehickstein@users.noreply.github.com>
+Date:   Thu Oct 4 10:33:20 2018 -0500
+
+    Merge pull request #1 from ehickstein/eric
+    
+    Eric
+
+[33mcommit 46c2c3a019a2394fa0aeda75d983a2fc8ca6b9e3[m
+Author: ehickstein <38333223+ehickstein@users.noreply.github.com>
+Date:   Thu Oct 4 10:32:12 2018 -0500
+
+    Added CSS and JavaScript files under Assets
+
+[33mcommit 300f109aff59e39d02a7b2c4f0d3f8e474cb3200[m
+Author: Andre <amcaron1@msn.com>
+Date:   Wed Oct 3 14:25:38 2018 -0500
+
+    test
+
+[33mcommit 11c50735ee1432333b8c86c31704a9f2de0b4ddf[m[33m ([m[1;31morigin/eric[m[33m)[m
+Author: ehickstein <38333223+ehickstein@users.noreply.github.com>
+Date:   Wed Oct 3 14:14:48 2018 -0500
+
+    Added index.html
+
+[33mcommit ad89e4cba819a5b14eadeebe74e5a086a5c815bb[m[33m ([m[1;32mmaster[m[33m)[m
+Author: Eric Hickstein <38333223+ehickstein@users.noreply.github.com>
+Date:   Wed Oct 3 14:03:15 2018 -0500
+
+    Initial commit
