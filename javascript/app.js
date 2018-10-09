@@ -185,6 +185,7 @@ $.ajax({
     for (i = 0; i < response.pagination.object_count; i++) {
         var eventName = response.events[i].name.text;
         var eventLink = "<a class='waves-effect waves-light btn light-green' style='float:right;' href='" + response.events[i].url + "' + target='_blank'>Link</a>";
+
         var eventDate = moment(response.events[i].start.local).format("MM/DD/YYYY");
         var eventTime = moment(response.events[i].start.local, "HH:mm:ss").format("hh:mm a");
         var eventLocation = response.events[i].venue_id;
@@ -242,7 +243,7 @@ $.ajax({
 
 $("#socialRow").on("click", function() {
     $("#socialEvents").empty();
-    var queryMeetup = "https://api.meetup.com/find/upcoming_events/?key=50714b3e1a91d102f757e2e3b466057&start_date_range=" + startDate + "&end_date_range=" + endDate + "&lat=" + searchLAT + "&lon=" + searchLON;
+    var queryMeetup = "https://api.meetup.com/find/upcoming_events/?key=50714b3e1a91d102f757e2e3b466057&start_date_range=" + startDate + "&public_limited=false&limited_events=false&end_date_range=" + endDate + "&lat=" + searchLAT + "&lon=" + searchLON;
 
 if (startDate < endDate && startDate >= today) {
     $.ajax({
@@ -254,18 +255,17 @@ if (startDate < endDate && startDate >= today) {
             var eventName = response.events[i].name;
             var eventDate = moment(response.events[i].local_date).format("MM/DD/YYYY");
             var eventTime = moment(response.events[i].local_time, "HH:mm:ss").format("hh:mm a");
-            var eventLocation = response.events[i].venue.address_1;
+            // var eventLocation = response.events[i].venue.address_1;
             var eventLink = "<a class='waves-effect waves-light btn light-green' style='float:right;'href='" + response.events[i].link + "' + target='_blank'>" + 'Link' + "</a>";
             var eventType = $("<tr>");
             var eventDateTD = $("<td>");
             var eventTimeTD = $("<td>");
             var eventNameTD = $("<td>");
-            var eventLocationTD = $("<td>");
+            // var eventLocationTD = $("<td>");
             var eventLinkTD = $("<td>");
             $(eventDateTD).append(eventDate);
             $(eventTimeTD).append(eventTime);
             $(eventNameTD).append(eventName);
-            $(eventLocationTD).append(eventLocation);
             $(eventLinkTD).append(eventLink);
             $(eventType).append(eventDateTD, eventNameTD, eventLocationTD, eventLinkTD);
             $("#socialEvents").append(eventType);
