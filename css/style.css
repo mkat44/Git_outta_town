@@ -70,7 +70,27 @@ body{
 }
 #mainContent{
     border: 1px solid #eeeeee;
+    min-width: 100%;
 }
 #paraFooter{
     padding-top: 15px;
+}
+#th1{
+    float:left;
+    margin-right: 10%;
+}
+#th2{
+    float:left;
+    margin-right: 15%;
+}
+#th3{
+    float:left;
+    margin-left: 6%;
+}
+#th4{
+    float:right;
+    margin-right: 20px;
+}
+.collapsible{
+    min-width: 100%;
 }
