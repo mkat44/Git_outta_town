@@ -305,13 +305,19 @@ else {
 
         }
         // mapquest url
-        mapUrl = "https://www.mapquest.com/search/results?slug=%2Fus%2F"+lowerState+"%2F"+hyphenCity+"&query="+delimiterCity+",%20"+state+"&page=0";
+        var mapUrl = "https://www.mapquest.com/search/results?slug=%2Fus%2F"+lowerState+"%2F"+hyphenCity+"&query="+delimiterCity+",%20"+state+"&page=0";
+        // weather url
+        var weatherUrl = "https://www.wunderground.com/weather/us/"+lowerState+"/"+hyphenCity;
         // If this is the first search, a new button is created and appended to auxBox, which is appended to mainContent
         if (mapDisplay == false){
 
             var mapButton = $("<a href='"+mapUrl+"' id=map-button class=aux-stuff target='_blank'><button type=submit>mapquest</button></a>");
 
             auxBox.html(mapButton);
+
+            var weatherButton = $("<a href='"+weatherUrl+"' id=weather-button class=aux-stuff target='_blank'><button type=submit>Weather</button></a>");
+
+            auxBox.html(weatherButton);
 
             $("#mainContent").append(auxBox);
 
