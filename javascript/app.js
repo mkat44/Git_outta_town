@@ -229,7 +229,7 @@ $.ajax({
 // mapquest geolocation api
 // takes city,state and gives us lat/lon for other apis
 
-    var queryLocation = "http://www.mapquestapi.com/geocoding/v1/address?key=QxUvIdV0SxYVrEFvZBdqCWOBVABMZZkd&location=" + searchTerm;
+    var queryLocation = "https://www.mapquestapi.com/geocoding/v1/address?key=QxUvIdV0SxYVrEFvZBdqCWOBVABMZZkd&location=" + searchTerm;
 
 
     $.ajax({
