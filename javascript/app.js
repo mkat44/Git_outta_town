@@ -110,7 +110,7 @@ console.log(today)
             id: 'wikiLinkHolder'
         }).append( $('<div>', {
             id: 'wikiLink'
-        })).append("<a class='waves-effect waves-light btn light-green' href = '" + fullLink + "'>"+ "Wikipedia").appendTo("#buttonDiv");
+        })).append("<a class='waves-effect waves-light btn light-green' style='position: relative; float: left; margin-right: 7.5px;'href = '" + fullLink + "'>"+ "Wikipedia").appendTo("#buttonDiv");
 
 
         $("#cityName").text(city + ", " + state);
@@ -138,7 +138,7 @@ console.log(today)
         console.log(response);
         for (i = 0; i < response.pagination.object_count; i++) {
             var eventName = response.events[i].name.text;
-            var eventLink = "<a href='" + response.events[i].url + "' + target='_blank'><button>More Info</button></a>";
+            var eventLink = "<a class='waves-effect waves-light btn light-green' style='float:right;' href='" + response.events[i].url + "' + target='_blank'>Link</a>";
             var eventDate = moment(response.events[i].start.local).format("MM/DD/YYYY");
             var eventTime = moment(response.events[i].start.local, "HH:mm:ss").format("hh:mm a");
             var eventLocation = response.events[i].venue_id;
@@ -186,7 +186,7 @@ $.ajax({
     console.log(response);
     for (i = 0; i < response.pagination.object_count; i++) {
         var eventName = response.events[i].name.text;
-        var eventLink = "<a href='" + response.events[i].url + "' + target='_blank'><button>More Info</button></a>";
+        var eventLink = "<a class='waves-effect waves-light btn light-green' style='float:right;' href='" + response.events[i].url + "' + target='_blank'>Link</a>";
         var eventDate = moment(response.events[i].start.local).format("MM/DD/YYYY");
         var eventTime = moment(response.events[i].start.local, "HH:mm:ss").format("hh:mm a");
         var eventLocation = response.events[i].venue_id;
@@ -260,8 +260,7 @@ if (startDate < endDate && startDate >= today) {
             var eventTime = moment(response.events[i].local_time, "HH:mm:ss").format("hh:mm a");
             var eventLocation = response.events[i].venue.address_1;
             var eventLink = "<a class='waves-effect waves-light btn light-green' style='float:right;'href='" + response.events[i].link + "' + target='_blank'>" + 'Link' + "</a>";
-
-            var event = $("<tr>");
+            var eventType = $("<tr>");
             var eventDateTD = $("<td>");
             var eventTimeTD = $("<td>");
             var eventNameTD = $("<td>");
@@ -272,9 +271,9 @@ if (startDate < endDate && startDate >= today) {
             $(eventNameTD).append(eventName);
             $(eventLocationTD).append(eventLocation);
             $(eventLinkTD).append(eventLink);
-            $(event).append(eventDateTD, eventNameTD, eventLocationTD, eventLinkTD);
+            $(eventType).append(eventDateTD, eventNameTD, eventLocationTD, eventLinkTD);
             var eventTable = $("<table>");
-            $(eventTable).append(event);
+            $(eventTable).append(eventType);
             $("#socialEvents").append(eventTable);
         }
     })
@@ -287,7 +286,7 @@ if (startDate < endDate && startDate >= today) {
     // Displays the mapquest button inside of a div called auxBox
     function displayAuxBox(){
         // Creates div
-        var auxBox = $("<div id = aux-box>");
+        var auxBox = $("<div id ='aux-box'>");
 
         // Prepares state and city for url link if there are no spaces in city
         var lowerState = state.toLowerCase();
@@ -306,11 +305,11 @@ if (startDate < endDate && startDate >= today) {
         // If this is the first search, a new button is created and appended to auxBox, which is appended to mainContent
         if (mapDisplay == false){
 
-            var mapButton = $("<a href='"+mapUrl+"' id=map-button class=aux-stuff target='_blank'><button type=submit>mapquest</button></a>");
+            var mapButton = $("<a class='waves-effect waves-light btn light-green' style='position: absolute; float: left;' href='"+mapUrl+"' id=map-button target='_blank'>Mapquest</a>");
 
             auxBox.html(mapButton);
 
-            $("#mainContent").append(auxBox);
+            $("#buttonDiv").append(auxBox);
 
             mapDisplay = true;
 
@@ -387,7 +386,7 @@ if (startDate < endDate && startDate >= today) {
             var eventDateConverted = moment(results.events[i].dates.start.localDate).format("MM/DD/YYYY");
             var eventTimeConverted = moment(results.events[i].dates.start.localTime,"HH:mm:ss").format("hh:mm a");
             // Creates a button inside of the table for more info
-            var moreInfoButton = $("<a href='"+results.events[i].url+"' target='_blank'><button class=more-info-button type=submit>More Info</button></a>")
+            var moreInfoButton = $("<a class='waves-effect waves-light btn light-green' style='float:right;' href='"+results.events[i].url+"' target='_blank'>Link</a>")
             // Creates a new row in the table
             var eventtr = $("<tr>");
             // Creates a new td for each category of data
