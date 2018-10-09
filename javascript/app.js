@@ -118,6 +118,15 @@ console.log(today)
 
     searchTerm = city + "+" + state
 
+    // Adding Travelocity button
+    // Here's th link
+    travelURL = "https://www.travelocity.com/Hotel-Search?destination=" + searchTerm;
+    // Here's the button:
+    travelButton = "<a class='waves-effect waves-light btn light-green' style='position: relative; float: left; margin-right: 7.5px;' href='" + travelURL + "' target='_blank'>Travelocity</a>"
+    // Appending the button to the div
+    $("#buttonDiv").append(travelButton);
+
+
 
     // eventbrite
     // Need new on click function here.
