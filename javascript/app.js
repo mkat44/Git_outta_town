@@ -276,7 +276,7 @@ if (startDate < endDate && startDate >= today) {
             $(eventTimeTD).append(eventTime);
             $(eventNameTD).append(eventName);
             $(eventLinkTD).append(eventLink);
-            $(eventType).append(eventDateTD, eventNameTD, eventLocationTD, eventLinkTD);
+            $(eventType).append(eventDateTD, eventNameTD, eventLinkTD);
             $("#socialEvents").append(eventType);
         }
     })
