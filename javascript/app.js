@@ -110,7 +110,7 @@ console.log(today)
             id: 'wikiLinkHolder'
         }).append( $('<div>', {
             id: 'wikiLink'
-        })).append("<a class='waves-effect waves-light btn light-green' href = '" + fullLink + "'>"+ "Wikipedia").appendTo("#buttonDiv");
+        })).append("<a class='waves-effect waves-light btn light-green' style='position: relative; float: left; margin-right: 7.5px;'href = '" + fullLink + "'>"+ "Wikipedia").appendTo("#buttonDiv");
 
 
         $("#cityName").text(city + ", " + state);
@@ -138,7 +138,11 @@ console.log(today)
         console.log(response);
         for (i = 0; i < response.pagination.object_count; i++) {
             var eventName = response.events[i].name.text;
+<<<<<<< HEAD
             var eventLink = "<a class='waves-effect waves-light btn light-green' style='float:right;' href='" + response.events[i].url + "' + target='_blank'>" + 'Link' + "</a>";
+=======
+            var eventLink = "<a class='waves-effect waves-light btn light-green' style='float:right;' href='" + response.events[i].url + "' + target='_blank'>Link</a>";
+>>>>>>> 3eebb5085c46a17314d330142f59165c6187cb86
             var eventDate = moment(response.events[i].start.local).format("MM/DD/YYYY");
             var eventTime = moment(response.events[i].start.local, "HH:mm:ss").format("hh:mm a");
             var eventLocation = response.events[i].venue_id;
@@ -186,7 +190,11 @@ $.ajax({
     console.log(response);
     for (i = 0; i < response.pagination.object_count; i++) {
         var eventName = response.events[i].name.text;
+<<<<<<< HEAD
         var eventLink = "<a class='waves-effect waves-light btn light-green' style='float:right;' href='" + response.events[i].url + "' + target='_blank'>" + 'Link' + "</a>";
+=======
+        var eventLink = "<a class='waves-effect waves-light btn light-green' style='float:right;' href='" + response.events[i].url + "' + target='_blank'>Link</a>";
+>>>>>>> 3eebb5085c46a17314d330142f59165c6187cb86
         var eventDate = moment(response.events[i].start.local).format("MM/DD/YYYY");
         var eventTime = moment(response.events[i].start.local, "HH:mm:ss").format("hh:mm a");
         var eventLocation = response.events[i].venue_id;
@@ -260,8 +268,7 @@ if (startDate < endDate && startDate >= today) {
             var eventTime = moment(response.events[i].local_time, "HH:mm:ss").format("hh:mm a");
             var eventLocation = response.events[i].venue.address_1;
             var eventLink = "<a class='waves-effect waves-light btn light-green' style='float:right;'href='" + response.events[i].link + "' + target='_blank'>" + 'Link' + "</a>";
-
-            var event = $("<tr>");
+            var eventType = $("<tr>");
             var eventDateTD = $("<td>");
             var eventTimeTD = $("<td>");
             var eventNameTD = $("<td>");
@@ -271,9 +278,9 @@ if (startDate < endDate && startDate >= today) {
             $(eventTimeTD).append(eventTime);
             $(eventNameTD).append(eventName);
             $(eventLinkTD).append(eventLink);
-            $(event).append(eventDateTD, eventNameTD, eventLocationTD, eventLinkTD);
+            $(eventType).append(eventDateTD, eventNameTD, eventLocationTD, eventLinkTD);
             var eventTable = $("<table>");
-            $(eventTable).append(event);
+            $(eventTable).append(eventType);
             $("#socialEvents").append(eventTable);
         }
     })
@@ -281,7 +288,7 @@ if (startDate < endDate && startDate >= today) {
 else {
     console.error("ERROR: Invalid date!")
 }
-
+})
     // mapquest key j1jNtHV0DbGZt1TOQg8rFdnvuzK3BBNH
 
     displayAuxBox();
@@ -289,7 +296,7 @@ else {
     // Displays the mapquest button inside of a div called auxBox
     function displayAuxBox(){
         // Creates div
-        var auxBox = $("<div id = aux-box>");
+        var auxBox = $("<div id ='aux-box'>");
 
         // Prepares state and city for url link if there are no spaces in city
         var lowerState = state.toLowerCase();
@@ -308,11 +315,11 @@ else {
         // If this is the first search, a new button is created and appended to auxBox, which is appended to mainContent
         if (mapDisplay == false){
 
-            var mapButton = $("<a href='"+mapUrl+"' id=map-button class=aux-stuff target='_blank'><button type=submit>mapquest</button></a>");
+            var mapButton = $("<a class='waves-effect waves-light btn light-green' style='position: absolute; float: left;' href='"+mapUrl+"' id=map-button target='_blank'>Mapquest</a>");
 
             auxBox.html(mapButton);
 
-            $("#mainContent").append(auxBox);
+            $("#buttonDiv").append(auxBox);
 
             mapDisplay = true;
 
@@ -336,28 +343,30 @@ else {
 
     
 
-})
+
     // Sets up a click handler for selecting the sports tab
    $(document).on("click", "#sportsRow", fetchEvents);
    // Sets up a click handler for selecting the theatre tab
    $(document).on("click", "#theaterRow", fetchEvents);
 
-   $("#sportsRow").attr("event", "sports");
-   $("#theaterRow").attr("event", "theatre");
+   $("#sportsRow").val("sports")
+   $("#theaterRow").val("theatre");
     // Fetches the data from ticketmaster
     function fetchEvents(){
         // Retrieves the event type, either sports or theatre
-        var eventType = $(this).attr("value");
+        var eventType = $(this).val();
 
         
         console.log("event = " + eventType);
 
         // Gets the input data from the DOM
-
+        var eventStartDate = startDate.slice(0, 10);
+        console.log(eventStartDate);
+        var eventEndDate = endDate.slice(0, 10);
+        console.log(eventEndDate);
         console.log("cityName = " + city);
         // Sets up the query url based on the input data and event type
-        var queryURL = "https://app.ticketmaster.com/discovery/v2/events.json?city=" + city + "&stateCode=" + state + "&startDateTime=" + startDate +"T00%3A00%3A00Z&endDateTime=" + endDate + "T23%3A59%3A00Z&keyword=" + eventType + "&sort=date,asc&apikey=FJe0EUZsiu36JGLaKJ0OTRG6MUalTIbh";
-
+        var queryURL = "https://app.ticketmaster.com/discovery/v2/events.json?city=" + city + "&stateCode=" + state + "&startDateTime=" + eventStartDate +"T00%3A00%3A00Z&endDateTime=" + eventEndDate + "T23%3A59%3A00Z&keyword=" + eventType + "&sort=date,asc&apikey=FJe0EUZsiu36JGLaKJ0OTRG6MUalTIbh";
         //Makes the API call
         $.ajax({
             url: queryURL,
@@ -374,7 +383,7 @@ else {
         });
     }
     // Displays the API results in a table
-    function displayEvents (results,event){
+    function displayEvents (results,eventType){
         // Loops through the results array
         for (var i = 0; i < results.events.length; i++) {
             
@@ -388,7 +397,7 @@ else {
             var eventDateConverted = moment(results.events[i].dates.start.localDate).format("MM/DD/YYYY");
             var eventTimeConverted = moment(results.events[i].dates.start.localTime,"HH:mm:ss").format("hh:mm a");
             // Creates a button inside of the table for more info
-            var moreInfoButton = $("<a href='"+results.events[i].url+"' target='_blank'><button class=more-info-button type=submit>More Info</button></a>")
+            var moreInfoButton = $("<a class='waves-effect waves-light btn light-green' style='float:right;' href='"+results.events[i].url+"' target='_blank'>Link</a>")
             // Creates a new row in the table
             var eventtr = $("<tr>");
             // Creates a new td for each category of data
@@ -403,11 +412,11 @@ else {
             eventtr.append(eventName);
             eventtr.append(eventLocation);
             eventtr.append(eventLink);            
-            // Based on whether the sports tab or theatre tab was selected, appends new row to table
-            if (event == "Sports"){
+            // Based on weather the sports tab or theatre tab was selected, appends new row to table
+            if (eventType == "sports"){
                 $("#sportsTable").append(eventtr);
             }
-            else if (event == "Theatre"){
+            else if (eventType == "theatre"){
                 $("#theaterTable").append(eventtr);
             }
         }
