@@ -34,6 +34,16 @@ console.log(today)
      $("#contentHeader").hide();
      $("#mainContent").hide();
      $("#searchButton").click(function(){
+        console.log($("#firstDate").val(), $("#secondDate").val())
+        startDate = $("#firstDate").val() + "T00:00:00"
+        endDate   = $("#secondDate").val() + "T00:00:00"
+        console.log(startDate)
+        console.log(endDate)
+        if (startDate > endDate || startDate < today) {
+            // Put the user text here saying invalid date
+            console.error("ERROR:  Invalid date entered!")
+        }
+        else {
         $("#contentHeader").show();
         $("#mainContent").show();
         $("#buttonDiv").text("");
@@ -86,11 +96,7 @@ console.log(today)
           var fullLink = link + city + ", " + state
          console.log(fullLink)
          // Assigning the start and end date to use in the other API's for events
-        console.log($("#firstDate").val(), $("#secondDate").val())
-        startDate = $("#firstDate").val() + "T00:00:00"
-        endDate   = $("#secondDate").val() + "T00:00:00"
-        console.log(startDate)
-        console.log(endDate)
+        
         
         $('<div>', {
             id: 'wikiLinkHolder'
@@ -341,5 +347,6 @@ else {
 
     };
     });
+}
 })
 }
