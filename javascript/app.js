@@ -248,6 +248,7 @@ $("#socialRow").on("click", function() {
     $("#socialEvents").empty();
     var queryMeetup = "https://api.meetup.com/find/upcoming_events/?key=50714b3e1a91d102f757e2e3b466057&start_date_range=" + startDate + "&end_date_range=" + endDate + "&lat=" + searchLAT + "&lon=" + searchLON;
 
+if (startDate < endDate && startDate >= today) {
     $.ajax({
         url: queryMeetup,
         method: "GET"
@@ -256,9 +257,9 @@ $("#socialRow").on("click", function() {
         for (i = 0; i < response.events.length; i++) {
             var eventName = response.events[i].name;
             var eventDate = moment(response.events[i].local_date).format("MM/DD/YYYY");
-            var eventTime = moment(response.events[i].local_time, "HH:mm:ss").format("hh:mm a");        
+            var eventTime = moment(response.events[i].local_time, "HH:mm:ss").format("hh:mm a");
             var eventLocation = response.events[i].venue.address_1;
-            var eventLink = "<a href='" + response.events[i].link + "' + target='_blank'><button>More Info</button></a>";
+            var eventLink = "<a class='waves-effect waves-light btn light-green' style='float:right;'href='" + response.events[i].link + "' + target='_blank'>" + 'Link' + "</a>";
 
             var event = $("<tr>");
             var eventDateTD = $("<td>");
@@ -277,10 +278,10 @@ $("#socialRow").on("click", function() {
             $("#socialEvents").append(eventTable);
         }
     })
-
-   $(document).on("click", "#sportsEvents", fetchEvents);
-
-
+}
+else {
+    console.error("ERROR: Invalid date!")
+}
 
     // mapquest key j1jNtHV0DbGZt1TOQg8rFdnvuzK3BBNH
 
@@ -340,23 +341,22 @@ $("#socialRow").on("click", function() {
     // Sets up a click handler for selecting the sports tab
    $(document).on("click", "#sportsRow", fetchEvents);
    // Sets up a click handler for selecting the theatre tab
-   $(document).on("click", "#theatreEvents", fetchEvents);
+   $(document).on("click", "#theaterRow", fetchEvents);
 
+   $("#sportsRow").attr("event", "sports");
+   $("#theaterRow").attr("event", "theatre");
     // Fetches the data from ticketmaster
     function fetchEvents(){
         // Retrieves the event type, either sports or theatre
-        var event = $(this).attr("value");
-
-        console.log("event = " + event);
+        var eventType = $(this).attr("value");
 
         
         console.log("event = " + eventType);
 
         // Gets the input data from the DOM
 
-        console.log("cityName = " + cityName);
+        console.log("cityName = " + city);
         // Sets up the query url based on the input data and event type
-        var queryURL = "https://app.ticketmaster.com/discovery/v2/events.json?city=" + cityName + "&stateCode=" + stateName + "&startDateTime=" + startDate +"T00%3A00%3A00Z&endDateTime=" + endDate + "T23%3A59%3A00Z&keyword=" + event + "&sort=date,asc&apikey=FJe0EUZsiu36JGLaKJ0OTRG6MUalTIbh";
         var queryURL = "https://app.ticketmaster.com/discovery/v2/events.json?city=" + city + "&stateCode=" + state + "&startDateTime=" + startDate +"T00%3A00%3A00Z&endDateTime=" + endDate + "T23%3A59%3A00Z&keyword=" + eventType + "&sort=date,asc&apikey=FJe0EUZsiu36JGLaKJ0OTRG6MUalTIbh";
 
         //Makes the API call
@@ -368,7 +368,7 @@ $("#socialRow").on("click", function() {
 
             var results = response._embedded;
             // Calls the function to display the API results
-            displayEvents(results,event);
+            displayEvents(results,eventType);
 
             console.log(results);
             
@@ -409,7 +409,7 @@ $("#socialRow").on("click", function() {
                 $("#sportsTable").append(eventtr);
             }
             else if (event == "Theatre"){
-                $("#theatreTable").append(eventtr);
+                $("#theaterTable").append(eventtr);
             }
         }
 
