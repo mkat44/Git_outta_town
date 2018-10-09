@@ -343,22 +343,24 @@ else {
    // Sets up a click handler for selecting the theatre tab
    $(document).on("click", "#theaterRow", fetchEvents);
 
-   $("#sportsRow").attr("event", "sports");
-   $("#theaterRow").attr("event", "theatre");
+   $("#sportsRow").val("sports")
+   $("#theaterRow").val("theatre");
     // Fetches the data from ticketmaster
     function fetchEvents(){
         // Retrieves the event type, either sports or theatre
-        var eventType = $(this).attr("value");
+        var eventType = $(this).val();
 
         
         console.log("event = " + eventType);
 
         // Gets the input data from the DOM
-
+        var eventStartDate = startDate.slice(0, 10);
+        console.log(eventStartDate);
+        var eventEndDate = endDate.slice(0, 10);
+        console.log(eventEndDate);
         console.log("cityName = " + city);
         // Sets up the query url based on the input data and event type
-        var queryURL = "https://app.ticketmaster.com/discovery/v2/events.json?city=" + city + "&stateCode=" + state + "&startDateTime=" + startDate +"T00%3A00%3A00Z&endDateTime=" + endDate + "T23%3A59%3A00Z&keyword=" + eventType + "&sort=date,asc&apikey=FJe0EUZsiu36JGLaKJ0OTRG6MUalTIbh";
-
+        var queryURL = "https://app.ticketmaster.com/discovery/v2/events.json?city=" + city + "&stateCode=" + state + "&startDateTime=" + eventStartDate +"T00%3A00%3A00Z&endDateTime=" + eventEndDate + "T23%3A59%3A00Z&keyword=" + eventType + "&sort=date,asc&apikey=FJe0EUZsiu36JGLaKJ0OTRG6MUalTIbh";
         //Makes the API call
         $.ajax({
             url: queryURL,
@@ -375,7 +377,7 @@ else {
         });
     }
     // Displays the API results in a table
-    function displayEvents (results,event){
+    function displayEvents (results,eventType){
         // Loops through the results array
         for (var i = 0; i < results.events.length; i++) {
             
@@ -404,11 +406,11 @@ else {
             eventtr.append(eventName);
             eventtr.append(eventLocation);
             eventtr.append(eventLink);            
-            // Based on whether the sports tab or theatre tab was selected, appends new row to table
-            if (event == "Sports"){
+            // Based on weather the sports tab or theatre tab was selected, appends new row to table
+            if (eventType == "sports"){
                 $("#sportsTable").append(eventtr);
             }
-            else if (event == "Theatre"){
+            else if (eventType == "theatre"){
                 $("#theaterTable").append(eventtr);
             }
         }
