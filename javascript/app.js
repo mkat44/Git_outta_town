@@ -2,7 +2,7 @@
  
  // First we start by creating the variables that we need.  For this case, we have city, which is the city input
  // by the user, we have link, which is the base link for all wiki articles.
- var city  = ""
+ var city  = "";
  var link  = "https://en.wikipedia.org/wiki/"
  var state = ""
  var startDate = ""
@@ -10,35 +10,86 @@
  var searchLON = ""
  var searchLAT = ""
  var searchTerm
+
  var mapDisplay = false
+
+ // Setting up the current date to check to make sure the startDate >= the current date
+ var today = new Date();
+ var dd = today.getDate();
+ var mm = today.getMonth()+1;
+ var yyyy = today.getFullYear();
+
+ if(dd<10) {
+    dd = '0'+dd
+ } 
+
+ if(mm<10) {
+    mm = '0'+mm
+ } 
+
+today = yyyy + '-' + mm + '-' + dd + "T00:00:00";
+console.log(today)
+
 // Here we get the values of the input forms and assign them to the city and state variables to be displayed.
  window.onload = function(){
      $('.parallax').parallax();
-     $('.collapsible').hide();
+     $('.collapsible').collapsible();
+     $('.collapsibleDiv').hide();
+     $("#contentHeader").hide();
+     $("#mainContent").hide();
      $("#searchButton").click(function(){
-       
-         $('.collapsible').show();
-         // Setting the city and state variables
+
+        console.log($("#firstDate").val(), $("#secondDate").val())
+        startDate = $("#firstDate").val() + "T00:00:00"
+        endDate   = $("#secondDate").val() + "T00:00:00"
+        console.log(startDate)
+        console.log(endDate)
+        if (startDate > endDate || startDate < today) {
+            // Put the user text here saying invalid date
+            console.error("ERROR:  Invalid date entered!")
+        }
+        else {
+        $("#contentHeader").show();
+        $("#mainContent").show();
+        $("#buttonDiv").text("");
+        displayEventBox();
+        function displayEventBox(){
+
+        var eventBox = $("<div class = event-box>");
+
+        $("#mainContent").append(eventBox);
+
+        }
+         $('.collapsibleDiv').show();
+
+        // Setting the city and state variables
         city  = $("#searchBar").val().trim();
         state = $("#searchState").val().trim();
         // Making the cities first character uppercase and making state all uppercase.
         city = city.toLowerCase()
         city = city.charAt(0).toUpperCase() + city.slice(1)
+          
         var arr = []
+
+        city = city.replace("-", " - ")
+
+        console.log(city)
+
         function capitalize(str) {
             var sep = str.split(" ")
+            console.log(sep)
             for (i=0; i<sep.length; i++) {
                 arr.push(sep[i][0].toUpperCase()+sep[i].slice(1))
+                console.log(arr)
             }
             return arr.join(" ")
         }
         city = capitalize(city)
         state = state.toUpperCase()
-        
 
         var fullLink = link + city + ", " + state
         console.log(fullLink)
-
+        city = city.replace(" - ", "-")
     
 
 
@@ -52,50 +103,34 @@
         
           var fullLink = link + city + ", " + state
          console.log(fullLink)
-
+         // Assigning the start and end date to use in the other API's for events
+        
+        
         $('<div>', {
             id: 'wikiLinkHolder'
         }).append( $('<div>', {
             id: 'wikiLink'
-        })).append("<a href = '" + fullLink + "'>"+fullLink).appendTo("#mainContent")
-        // Assigning the start and end date to use in the other API's for events
-        console.log($("#firstDate").val(), $("#secondDate").val())
-        startDate = $("#firstDate").val() + "T00:00:00"
-        endDate   = $("#secondDate").val() + "T00:00:00"
-        console.log(startDate)
-        console.log(endDate)
-        
+        })).append("<a class='waves-effect waves-light btn light-green' href = '" + fullLink + "'>"+ "Wikipedia").appendTo("#buttonDiv");
 
 
+        $("#cityName").text(city + ", " + state);
 
-
-
-// placeholder for keyword to filter searches by
-    var searchKeyword = $(".collapsible-header").val();
 
     searchTerm = city + "+" + state
-    // mapquest geolocation api
-    // takes city,state and gives us lat/lon for other apis
-    // This code will be called as soon as the Search button is clicked in order to assign those variables.
-
- 
 
 
-    // meetup
-    // Need new on click function here
-    // needs dates formatted as YYYY-MM-DD+T+HH:MM:SS
-    // needs cities as LON (longitude) & LAT (latitude)
-    // doesn't currently return anything but a console log; working on pulling out relevant info now
-    // This code won't be called until it is told to.  So uppon the click of a button
-        
     // eventbrite
     // Need new on click function here.
     // needs dates formatted as YYYY-MM-DD+T+HH:MM:SS
     // doesn't currently return anything but a console log; working on pulling out relevant info now
 
-    var queryEB = "https://www.eventbriteapi.com/v3/events/search/?q=" + searchTerm + "&start_date.range_start=" + startDate + "&start_date.range_end=" + endDate + "&token=JYNTN4DWJF75I4XR2WTL";
+    $("#musicRow").on("click", function() {
+        // placeholder for keyword to filter searches by
+    var searchKeyword = "Music";
+    console.log(searchKeyword)
+    $("#musicEvents").empty();
+    var queryEB = "https://www.eventbriteapi.com/v3/events/search/?q=" + searchKeyword + "&location.address=" + searchTerm + "&start_date.range_start=" + startDate + "&start_date.range_end=" + endDate + "&token=JYNTN4DWJF75I4XR2WTL";
 
-if (startDate < endDate)
     $.ajax({
         url: queryEB,
         method: "GET"
@@ -103,9 +138,9 @@ if (startDate < endDate)
         console.log(response);
         for (i = 0; i < response.pagination.object_count; i++) {
             var eventName = response.events[i].name.text;
-            var eventLink = response.events[i].url;
+            var eventLink = "<a href='" + response.events[i].url + "' + target='_blank'><button>More Info</button></a>";
             var eventDate = moment(response.events[i].start.local).format("MM/DD/YYYY");
-            var eventTime = moment(response.events[i].star.local).format("hh:mm a");
+            var eventTime = moment(response.events[i].start.local, "HH:mm:ss").format("hh:mm a");
             var eventLocation = response.events[i].venue_id;
             var eventVenue = "";
             var queryEvent = "https://www.eventbriteapi.com/v3/venues/" + eventLocation + "/?token=JYNTN4DWJF75I4XR2WTL";
@@ -129,11 +164,61 @@ if (startDate < endDate)
             $(eventLocationTD).append(eventVenue);
             $(eventLinkTD).append(eventLink);
             $(event).append(eventDateTD, eventNameTD, eventLocationTD, eventLinkTD);
+            var eventTable = $("<table>");
+            $(eventTable).append(event);
+            $("#musicEvents").append(eventTable);
         }
     })
-else {
-    console.log("ERROR: Start date is further than end date")
-}
+
+})
+
+$("#foodDrinkRow").on("click", function() {
+    // placeholder for keyword to filter searches by
+var searchKeyword = "Food and Drink";
+console.log(searchKeyword)
+$("#foodDrinkEvents").empty();
+var queryEB = "https://www.eventbriteapi.com/v3/events/search/?q=" + searchKeyword + "&location.address=" + searchTerm + "&start_date.range_start=" + startDate + "&start_date.range_end=" + endDate + "&token=JYNTN4DWJF75I4XR2WTL";
+
+$.ajax({
+    url: queryEB,
+    method: "GET"
+}).then(function(response) {
+    console.log(response);
+    for (i = 0; i < response.pagination.object_count; i++) {
+        var eventName = response.events[i].name.text;
+        var eventLink = "<a href='" + response.events[i].url + "' + target='_blank'><button>More Info</button></a>";
+        var eventDate = moment(response.events[i].start.local).format("MM/DD/YYYY");
+        var eventTime = moment(response.events[i].start.local, "HH:mm:ss").format("hh:mm a");
+        var eventLocation = response.events[i].venue_id;
+        var eventVenue = "";
+        var queryEvent = "https://www.eventbriteapi.com/v3/venues/" + eventLocation + "/?token=JYNTN4DWJF75I4XR2WTL";
+
+        $.ajax({
+            url: queryEvent,
+            method: "GET"
+        }).then(function(response) {
+            var eventVenue = response.address.address_1;
+        });
+
+        var event = $("<tr>");
+        var eventDateTD = $("<td>");
+        var eventTimeTD = $("<td>");
+        var eventNameTD = $("<td>");
+        var eventLocationTD = $("<td>");
+        var eventLinkTD = $("<td>");
+        $(eventDateTD).append(eventDate);
+        $(eventTimeTD).append(eventTime);
+        $(eventNameTD).append(eventName);
+        $(eventLocationTD).append(eventVenue);
+        $(eventLinkTD).append(eventLink);
+        $(event).append(eventDateTD, eventNameTD, eventLocationTD, eventLinkTD);
+        var eventTable = $("<table>");
+        $(eventTable).append(event);
+        $("#foodDrinkEvents").append(eventTable);
+    }
+})
+
+})
 
 // mapquest geolocation api
 // takes city,state and gives us lat/lon for other apis
@@ -157,9 +242,13 @@ else {
 // needs dates formatted as YYYY-MM-DD+T+HH:MM:SS
 // needs cities as LON (longitude) & LAT (latitude)
 // doesn't currently return anything but a console log; working on pulling out relevant info now
+
+
+$("#fillerIdSocial").on("click", function() {
+    $("#socialEvents").empty();
     var queryMeetup = "https://api.meetup.com/find/upcoming_events/?key=50714b3e1a91d102f757e2e3b466057&start_date_range=" + startDate + "&end_date_range=" + endDate + "&lat=" + searchLAT + "&lon=" + searchLON;
 
-if (startDate < endDate) {
+if (startDate < endDate && startDate >= today) {
     $.ajax({
         url: queryMeetup,
         method: "GET"
@@ -168,9 +257,9 @@ if (startDate < endDate) {
         for (i = 0; i < response.events.length; i++) {
             var eventName = response.events[i].name;
             var eventDate = moment(response.events[i].local_date).format("MM/DD/YYYY");
-            var eventTime = moment(response.events[i].local_time).format("hh:mm a");
+            var eventTime = moment(response.events[i].local_time, "HH:mm:ss").format("hh:mm a");
             var eventLocation = response.events[i].venue.address_1;
-            var eventLink = response.events[i].link;
+            var eventLink = "<a href='" + response.events[i].link + "' + target='_blank'><button>More Info</button></a>";
 
             var event = $("<tr>");
             var eventDateTD = $("<td>");
@@ -184,12 +273,16 @@ if (startDate < endDate) {
             $(eventLocationTD).append(eventLocation);
             $(eventLinkTD).append(eventLink);
             $(event).append(eventDateTD, eventNameTD, eventLocationTD, eventLinkTD);
+            var eventTable = $("<table>");
+            $(eventTable).append(event);
+            $("#socialEvents").append(eventTable);
         }
     })
 }
 else {
-    console.log("ERROR:  Start date is further than end date!")
+    console.error("ERROR: Invalid date!")
 }
+
 
     // mapquest key j1jNtHV0DbGZt1TOQg8rFdnvuzK3BBNH
 
@@ -311,4 +404,6 @@ else {
 
     };
     });
- }
+}
+})
+}
