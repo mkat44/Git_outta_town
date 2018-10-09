@@ -59,8 +59,10 @@ console.log(today)
         function capitalize(str) {
             var arr = []
             var sep = str.split(" ")
+            console.log(sep)
             for (i=0; i<sep.length; i++) {
                 arr.push(sep[i][0].toUpperCase()+sep[i].slice(1))
+                console.log(arr)
             }
             return arr.join(" ")
         }
@@ -83,19 +85,19 @@ console.log(today)
         
           var fullLink = link + city + ", " + state
          console.log(fullLink)
-
+         // Assigning the start and end date to use in the other API's for events
+        console.log($("#firstDate").val(), $("#secondDate").val())
+        startDate = $("#firstDate").val() + "T00:00:00"
+        endDate   = $("#secondDate").val() + "T00:00:00"
+        console.log(startDate)
+        console.log(endDate)
+        
         $('<div>', {
             id: 'wikiLinkHolder'
         }).append( $('<div>', {
             id: 'wikiLink'
         })).append("<a class='waves-effect waves-light btn light-green' href = '" + fullLink + "'>"+ "Wikipedia").appendTo("#buttonDiv");
 
-        // Assigning the start and end date to use in the other API's for events
-        console.log($("#firstDate").val(), $("#secondDate").val())
-        startDate = $("#firstDate").val() + "T00:00:00"
-        endDate   = $("#secondDate").val() + "T00:00:00"
-        console.log(startDate)
-        console.log(endDate)
 
         $("#cityName").text(city + ", " + state);
 
@@ -115,7 +117,6 @@ console.log(today)
     $("#musicEvents").empty();
     var queryEB = "https://www.eventbriteapi.com/v3/events/search/?q=" + searchKeyword + "&location.address=" + searchTerm + "&start_date.range_start=" + startDate + "&start_date.range_end=" + endDate + "&token=JYNTN4DWJF75I4XR2WTL";
 
-if (startDate < endDate && startDate >= today)
     $.ajax({
         url: queryEB,
         method: "GET"
@@ -154,9 +155,7 @@ if (startDate < endDate && startDate >= today)
             $("#musicEvents").append(eventTable);
         }
     })
-else {
-    console.error("ERROR: Invalid date!")
-}
+
 })
 
 $("#foodDrinkRow").on("click", function() {
@@ -166,7 +165,6 @@ console.log(searchKeyword)
 $("#foodDrinkEvents").empty();
 var queryEB = "https://www.eventbriteapi.com/v3/events/search/?q=" + searchKeyword + "&location.address=" + searchTerm + "&start_date.range_start=" + startDate + "&start_date.range_end=" + endDate + "&token=JYNTN4DWJF75I4XR2WTL";
 
-if (startDate < endDate)
 $.ajax({
     url: queryEB,
     method: "GET"
@@ -205,9 +203,7 @@ $.ajax({
         $("#foodDrinkEvents").append(eventTable);
     }
 })
-else {
-console.log("ERROR: Start date is further than end date")
-}
+
 })
 
 // mapquest geolocation api
