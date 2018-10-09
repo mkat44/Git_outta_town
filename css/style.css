@@ -76,22 +76,6 @@ body{
 #paraFooter{
     padding-top: 15px;
 }
-#th1{
-    float:left;
-    margin-right: 10%;
-}
-#th2{
-    float:left;
-    margin-right: 15%;
-}
-#th3{
-    float:left;
-    margin-left: 6%;
-}
-#th4{
-    float:right;
-    margin-right: 20px;
-}
 .collapsible{
     min-width: 100%;
 }
@@ -100,9 +84,4 @@ body{
 }
 #contentHeader{
     height: 145px;
-}
-#th5{
-    float:left;
-    margin-right: 15%;
-    margin-left: 2.5%;
 }

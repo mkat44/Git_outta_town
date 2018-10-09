@@ -152,7 +152,7 @@ console.log(today)
                 var eventVenue = response.address.address_1;
             });
 
-            var event = $("<tr>");
+            var eventRow = $("<tr>");
             var eventDateTD = $("<td>");
             var eventTimeTD = $("<td>");
             var eventNameTD = $("<td>");
@@ -163,10 +163,8 @@ console.log(today)
             $(eventNameTD).append(eventName);
             $(eventLocationTD).append(eventVenue);
             $(eventLinkTD).append(eventLink);
-            $(event).append(eventDateTD, eventTimeTD, eventNameTD, eventLocationTD, eventLinkTD);
-            var eventTable = $("<table>");
-            $(eventTable).append(event);
-            $("#musicEvents").append(eventTable);
+            $(eventRow).append(eventDateTD, eventNameTD, eventLocationTD, eventLinkTD);
+            $("#musicEvents").append(eventRow);
         }
     })
 
@@ -201,7 +199,7 @@ $.ajax({
             var eventVenue = response.address.address_1;
         });
 
-        var event = $("<tr>");
+        var eventRow = $("<tr>");
         var eventDateTD = $("<td>");
         var eventTimeTD = $("<td>");
         var eventNameTD = $("<td>");
@@ -212,10 +210,8 @@ $.ajax({
         $(eventNameTD).append(eventName);
         $(eventLocationTD).append(eventVenue);
         $(eventLinkTD).append(eventLink);
-        $(event).append(eventDateTD, eventTimeTD, eventNameTD, eventLocationTD, eventLinkTD);
-        var eventTable = $("<table>");
-        $(eventTable).append(event);
-        $("#foodDrinkEvents").append(eventTable);
+        $(eventRow).append(eventDateTD, eventNameTD, eventLocationTD, eventLinkTD);
+        $("#foodDrinkEvents").append(eventRow);
     }
 })
 
@@ -271,10 +267,8 @@ if (startDate < endDate && startDate >= today) {
             $(eventTimeTD).append(eventTime);
             $(eventNameTD).append(eventName);
             $(eventLinkTD).append(eventLink);
-            $(eventType).append(eventDateTD, eventTimeTD, eventNameTD, eventLinkTD);
-            var eventTable = $("<table>");
-            $(eventTable).append(eventType);
-            $("#socialEvents").append(eventTable);
+            $(eventType).append(eventDateTD, eventNameTD, eventLocationTD, eventLinkTD);
+            $("#socialEvents").append(eventType);
         }
     })
 }
@@ -306,20 +300,26 @@ else {
         // mapquest url
         mapUrl = "https://www.mapquest.com/search/results?slug=%2Fus%2F"+lowerState+"%2F"+hyphenCity+"&query="+delimiterCity+",%20"+state+"&page=0";
         // If this is the first search, a new button is created and appended to auxBox, which is appended to mainContent
+        var weatherUrl = "https://www.wunderground.com/weather/us/"+lowerState+"/"+hyphenCity;
         if (mapDisplay == false){
 
             var mapButton = $("<a class='waves-effect waves-light btn light-green' style='position: absolute; float: left;' href='"+mapUrl+"' id=map-button target='_blank'>Mapquest</a>");
 
-            auxBox.html(mapButton);
+            auxBox.append(mapButton);
+
+            var weatherButton = $("<a class='waves-effect waves-light btn light-green' style='position: absolute; float: left;margin-left: 120px;' href='"+weatherUrl+"' id=weather-button class=aux-stuff target='_blank'>Weather</a>");
+
+            auxBox.append(weatherButton);
 
             $("#buttonDiv").append(auxBox);
 
-            mapDisplay = true;
+            mapDisplay == true;
 
         }
         else {
             // Else the original button is updated with a new url
             $("#map-button").attr("href", mapUrl);
+            $("#weather-button").attr("href", weatherUrl);
         }
     }
 
@@ -401,7 +401,14 @@ else {
             var eventLink = $("<td>").html(moreInfoButton);
             // Appends the new tds to the row
             eventtr.append(eventDate);
-            eventtr.append(eventTime);
+            console.log(eventTimeConverted);
+            if(results.events[i].dates.start.localTime == undefined){
+                $(eventTime).text("Not listed");
+                eventtr.append(eventTime);
+            }
+            else{
+                eventtr.append(eventTime);
+            }
             eventtr.append(eventName);
             eventtr.append(eventLocation);
             eventtr.append(eventLink);            
