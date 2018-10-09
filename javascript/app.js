@@ -282,7 +282,7 @@ if (startDate < endDate && startDate >= today) {
 else {
     console.error("ERROR: Invalid date!")
 }
-
+})
     // mapquest key j1jNtHV0DbGZt1TOQg8rFdnvuzK3BBNH
 
     displayAuxBox();
@@ -337,7 +337,6 @@ else {
 
     
 
-})
     // Sets up a click handler for selecting the sports tab
    $(document).on("click", "#sportsRow", fetchEvents);
    // Sets up a click handler for selecting the theatre tab
