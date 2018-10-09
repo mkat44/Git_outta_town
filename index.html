@@ -8,6 +8,7 @@
     <link rel="stylesheet" type="text/css" media="screen" href="css/reset.css" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.css"/>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" media="screen" href="css/style.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
@@ -35,8 +36,8 @@
                 <label for="searchBar">City Name</label>
             </div>
             <div class="input-field col sm12 l3" id="searchDiv2">
-                <input id="searchState" type="search">
-                <label for="searchState">State</label>
+                <input id="searchState" type="search" maxlength="2">
+                <label for="searchState">State eg.(MN)</label>
             </div>
             <div class="col sm 12 l1" id="searchButtonDiv">
                 <a class="waves-effect waves-light btn light-green" id="searchButton">search</a>
@@ -103,13 +104,13 @@
                             <table>
                                 <thead>
                                     <tr>
-                                        <th id="th1">
+                                        <th>
                                             Date
                                         </th>
-                                        <th id="th5">
+                                        <th>
                                             Name
                                         </th>
-                                        <th id="th4">
+                                        <th>
                                             Link
                                         </th>
                                     </tr>
@@ -149,13 +150,7 @@
                                                 Date
                                             </th>
                                             <th>
-                                                Time
-                                            </th>
-                                            <th>
                                                 Name
-                                            </th>
-                                            <th>
-                                                Location
                                             </th>
                                             <th>
                                                 Link
@@ -185,24 +180,44 @@
                                             Link
                                         </th>
                                     </tr>
-                                    <tbody id="socialEvents">
-        
-                                    </tbody>
-                                </table>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
+                                    <tbody id="theaterTable">
+
+                                </tbody>
+                            </table>                            
+                        </div>
+                    </li>
+                    <li>
+                        <div class="collapsible-header" id="socialRow">Social</div>
+                        <div class="collapsible-body">
+                            <table>
+                                <tr>
+                                    <th>
+                                        Date
+                                    </th>
+                                    <th>
+                                        Name
+                                    </th>
+                                    <th>
+                                        Link
+                                    </th>
+                                </tr>
+                                <tbody id="socialEvents">
+    
+                                </tbody>
+                            </table>
+                        </div>
+                    </li>
+                </ul>
             </div>
         </div>
-        </div>
-        <div class="col l12 parallax-container" id="parallaxContainer2">
-            <div class="container">
-                <div class="row">
-                    <div class="white-text" id="paraFooter">
-                        <h4>&copy; Copyright Edward Sharpe and the Magnetic Zeros Project Group</h4>
-                        <h5>University of Minnesota Coding Bootcamp 2018</h5>
-                    </div>
+    </div>
+    </div>
+    <div class="col l12 parallax-container" id="parallaxContainer2">
+        <div class="container">
+            <div class="row">
+                <div class="white-text" id="paraFooter">
+                    <h4>&copy; Copyright Edward Sharpe and the Magnetic Zeros Project Group</h4>
+                    <h5>University of Minnesota Coding Bootcamp 2018 <a href="https://github.com/ehickstein/Git_outta_town" class="fab fa-github style='color:#ffffff; background-color:#ffffff;'"></a></h5>
                 </div>
             </div>
             <div class="parallax"><img src="images/Landscape-rocky-mountains-snow-sky-with-white-cloud-mountain-river-meadow-with-green-grass-Grand-Teton-National-Park-U.S.-National-Park-Service-1920x1200.jpg" id="parallaxImage2"/></div>
