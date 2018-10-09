@@ -138,7 +138,7 @@ console.log(today)
         console.log(response);
         for (i = 0; i < response.pagination.object_count; i++) {
             var eventName = response.events[i].name.text;
-            var eventLink = "<a href='" + response.events[i].url + "' + target='_blank'><button>More Info</button></a>";
+            var eventLink = "<a class='waves-effect waves-light btn light-green' style='float:right;' href='" + response.events[i].url + "' + target='_blank'>" + 'Link' + "</a>";
             var eventDate = moment(response.events[i].start.local).format("MM/DD/YYYY");
             var eventTime = moment(response.events[i].start.local, "HH:mm:ss").format("hh:mm a");
             var eventLocation = response.events[i].venue_id;
@@ -186,7 +186,7 @@ $.ajax({
     console.log(response);
     for (i = 0; i < response.pagination.object_count; i++) {
         var eventName = response.events[i].name.text;
-        var eventLink = "<a href='" + response.events[i].url + "' + target='_blank'><button>More Info</button></a>";
+        var eventLink = "<a class='waves-effect waves-light btn light-green' style='float:right;' href='" + response.events[i].url + "' + target='_blank'>" + 'Link' + "</a>";
         var eventDate = moment(response.events[i].start.local).format("MM/DD/YYYY");
         var eventTime = moment(response.events[i].start.local, "HH:mm:ss").format("hh:mm a");
         var eventLocation = response.events[i].venue_id;
@@ -258,7 +258,6 @@ if (startDate < endDate && startDate >= today) {
             var eventName = response.events[i].name;
             var eventDate = moment(response.events[i].local_date).format("MM/DD/YYYY");
             var eventTime = moment(response.events[i].local_time, "HH:mm:ss").format("hh:mm a");
-            var eventLocation = response.events[i].venue.address_1;
             var eventLink = "<a class='waves-effect waves-light btn light-green' style='float:right;'href='" + response.events[i].link + "' + target='_blank'>" + 'Link' + "</a>";
 
             var event = $("<tr>");
@@ -412,7 +411,6 @@ else {
         }
 
     };
-    });
-}
+    };
 })
 }
