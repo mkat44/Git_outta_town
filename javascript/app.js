@@ -138,11 +138,7 @@ console.log(today)
         console.log(response);
         for (i = 0; i < response.pagination.object_count; i++) {
             var eventName = response.events[i].name.text;
-<<<<<<< HEAD
-            var eventLink = "<a class='waves-effect waves-light btn light-green' style='float:right;' href='" + response.events[i].url + "' + target='_blank'>" + 'Link' + "</a>";
-=======
             var eventLink = "<a class='waves-effect waves-light btn light-green' style='float:right;' href='" + response.events[i].url + "' + target='_blank'>Link</a>";
->>>>>>> 3eebb5085c46a17314d330142f59165c6187cb86
             var eventDate = moment(response.events[i].start.local).format("MM/DD/YYYY");
             var eventTime = moment(response.events[i].start.local, "HH:mm:ss").format("hh:mm a");
             var eventLocation = response.events[i].venue_id;
@@ -167,7 +163,7 @@ console.log(today)
             $(eventNameTD).append(eventName);
             $(eventLocationTD).append(eventVenue);
             $(eventLinkTD).append(eventLink);
-            $(event).append(eventDateTD, eventNameTD, eventLocationTD, eventLinkTD);
+            $(event).append(eventDateTD, eventTimeTD, eventNameTD, eventLocationTD, eventLinkTD);
             var eventTable = $("<table>");
             $(eventTable).append(event);
             $("#musicEvents").append(eventTable);
@@ -190,11 +186,8 @@ $.ajax({
     console.log(response);
     for (i = 0; i < response.pagination.object_count; i++) {
         var eventName = response.events[i].name.text;
-<<<<<<< HEAD
-        var eventLink = "<a class='waves-effect waves-light btn light-green' style='float:right;' href='" + response.events[i].url + "' + target='_blank'>" + 'Link' + "</a>";
-=======
         var eventLink = "<a class='waves-effect waves-light btn light-green' style='float:right;' href='" + response.events[i].url + "' + target='_blank'>Link</a>";
->>>>>>> 3eebb5085c46a17314d330142f59165c6187cb86
+
         var eventDate = moment(response.events[i].start.local).format("MM/DD/YYYY");
         var eventTime = moment(response.events[i].start.local, "HH:mm:ss").format("hh:mm a");
         var eventLocation = response.events[i].venue_id;
@@ -219,7 +212,7 @@ $.ajax({
         $(eventNameTD).append(eventName);
         $(eventLocationTD).append(eventVenue);
         $(eventLinkTD).append(eventLink);
-        $(event).append(eventDateTD, eventNameTD, eventLocationTD, eventLinkTD);
+        $(event).append(eventDateTD, eventTimeTD, eventNameTD, eventLocationTD, eventLinkTD);
         var eventTable = $("<table>");
         $(eventTable).append(event);
         $("#foodDrinkEvents").append(eventTable);
@@ -266,19 +259,19 @@ if (startDate < endDate && startDate >= today) {
             var eventName = response.events[i].name;
             var eventDate = moment(response.events[i].local_date).format("MM/DD/YYYY");
             var eventTime = moment(response.events[i].local_time, "HH:mm:ss").format("hh:mm a");
-            var eventLocation = response.events[i].venue.address_1;
+            // var eventLocation = response.events[i].venue.address_1;
             var eventLink = "<a class='waves-effect waves-light btn light-green' style='float:right;'href='" + response.events[i].link + "' + target='_blank'>" + 'Link' + "</a>";
             var eventType = $("<tr>");
             var eventDateTD = $("<td>");
             var eventTimeTD = $("<td>");
             var eventNameTD = $("<td>");
-            var eventLocationTD = $("<td>");
+            // var eventLocationTD = $("<td>");
             var eventLinkTD = $("<td>");
             $(eventDateTD).append(eventDate);
             $(eventTimeTD).append(eventTime);
             $(eventNameTD).append(eventName);
             $(eventLinkTD).append(eventLink);
-            $(eventType).append(eventDateTD, eventNameTD, eventLocationTD, eventLinkTD);
+            $(eventType).append(eventDateTD, eventTimeTD, eventNameTD, eventLinkTD);
             var eventTable = $("<table>");
             $(eventTable).append(eventType);
             $("#socialEvents").append(eventTable);
