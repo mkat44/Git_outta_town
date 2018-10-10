@@ -2,11 +2,11 @@
 Heroku deployed link: "https://coding-bootcamp-project-1.herokuapp.com/index.html"
 
 ## Collaborators
-Eric: "https://github.com/ehickstein"
-Mary: "https://github.com/mkat44"
-Andre: "https://github.com/amcaron1"
-Reece: "https://github.com/ReeceShadden"
-Chase: "https://github.com/chaseholladay"
+* Eric: "https://github.com/ehickstein"
+* Mary: "https://github.com/mkat44"
+* Andre: "https://github.com/amcaron1"
+* Reece: "https://github.com/ReeceShadden"
+* Chase: "https://github.com/chaseholladay"
 
 ## Concept
 Our original concept was a website where the user could get information about which locations around the US are the best place
