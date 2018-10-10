@@ -18,10 +18,10 @@ APIs.
 browsers.
 5. Font Awesome - We used Font Awesome for linkable icons on the page.
 6. APIs - The backbone of this site is our APIs, which include...
-⋅⋅* Mapquest API - Used for geolocation services.
-⋅⋅* EventBrite API - Used for the "Music" and "Food & Drink" events.
-⋅⋅* Meetup API - Used for the "Social" events.
-⋅⋅* Ticketmaster API - Used for the "Sports" and "Theater" events.
+* Mapquest API - Used for geolocation services.
+* EventBrite API - Used for the "Music" and "Food & Drink" events.
+* Meetup API - Used for the "Social" events.
+* Ticketmaster API - Used for the "Sports" and "Theater" events.
 
 ## Front-end Design
 We saw that one of the "Nice to haves" on the project was to use the Materialize CSS library to polish the look of the front-
