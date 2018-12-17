@@ -1,5 +1,6 @@
 # Git_outta_town
 Heroku deployed link: "https://coding-bootcamp-project-1.herokuapp.com/index.html"
+<img src="https://i.imgur.com/XYgvk6x.png">
 
 ## Collaborators
 * Eric: "https://github.com/ehickstein"
